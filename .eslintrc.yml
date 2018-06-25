@@ -1,0 +1,20 @@
+extends:
+  - airbnb
+
+plugins:
+  - json
+
+env:
+  browser: true
+
+parserOptions:
+  ecmaVersion: 8
+
+rules:
+  max-len:
+    - "error"
+    - 120
+    - ignoreTrailingComments: true
+      ignoreComments: true
+      ignoreStrings: true
+  linebreak-style: off
