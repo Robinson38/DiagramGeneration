@@ -1,5 +1,78 @@
 
-const svgStart = '<svg width="2000" height="1000" xmlns="http://www.w3.org/2000/svg">';
+const svgStart = `
+<svg width="5000" height="5000" xmlns="http://www.w3.org/2000/svg">
+
+<g id="js">
+  <polyline points="1,1 85,1 119,34 119,131 1,131 1,0" style="fill:blue; stroke:black; stroke-width:3;" />
+  <text x="28" y="28" style="font-size:25px;">JS</text>
+</g>
+
+<g id="html">
+  <polyline points="1,1 85,1 119,34 119,131 1,131 1,0" style="fill:red; stroke:black; stroke-width:3;" />
+  <text x="6" y="30" style="font-size:25px;">HTML</text>
+</g>
+
+<g id="db">
+  <rect x="3" y="22" width="117" height="89" style="fill:green;" />
+  <ellipse cx="61" cy="22" rx="59" ry="20" style="stroke:black; stroke-width:3; fill:white;"/>
+  <ellipse cx="61" cy="22" rx="59" ry="20" style="stroke:black; stroke-width:3; fill:green;"/>
+  <path d="M2,22 v0,87" style="stroke:black; stroke-width:3;"/>
+  <path d="M120,22 v0,87" style="stroke:black; stroke-width:3;"/>
+  <path d="M2,51 a59,20 0 1,0 118,0" style="stroke:black; stroke-width:3; fill:green;"/>
+  <path d="M2,80 a59,20 0 1,0 118,0" style="stroke:black; stroke-width:3; fill:green;"/>
+  <path d="M2,108 a59,20 0 1,0 118,0" style="stroke:black; stroke-width:3; fill:green;" />
+  <path d="M2,108 a59,20 0 1,0 118,0" style="stroke:black; stroke-width:3; fill:green;" />
+  <text x="38" y="29" style="font-size:25px;">SQL</text>
+</g>
+
+<g id="folder">
+  <polyline points="2,30 2,2 60,2 60,30" style="fill:#C0C0C0; fill-opacity:0.3; stroke:black; stroke-width:3; stroke-linejoin:round;" />
+  <rect x="2" y="30" width="100" height="100" style="fill:#C0C0C0; fill-opacity:0.3; stroke:black; stroke-width:3; stroke-linejoin:round;" />
+  <text x="10" y="21" style="font-size:15px;">Folder</text>
+</g>
+
+<g id="htmljs1">
+  <polyline points="81,1 185,1 219,34 219,34 219,131 81,131 81,0" style="fill:blue; stroke:black; stroke-width:3;" />
+  <text x="120" y="30" style="font-size:25px;">JS</text>
+  <polyline points="1,1 80,1 114,39 114,39 114,131 1,131 1,0" style="fill:red; stroke:black; stroke-width:3;" />
+  <text x="6" y="30" style="font-size:25px;">HTML</text>
+</g>
+
+<g id="htmljs2">
+  <polyline points="81,1 185,1 219,34 219,34 219,131 81,131 81,0" style="fill:blue; stroke:black; stroke-width:3;" />
+  <polyline points="81,66 185,66 219,100 219,100 219,131 81,131 81,65" style="fill:blue; stroke:black; stroke-width:3;" />
+  <text x="120" y="30" style="font-size:25px;">JS</text>
+  <text x="120" y="95" style="font-size:25px;">JS</text>
+  <polyline points="1,1 80,1 114,39 114,39 114,131 1,131 1,0" style="fill:red; stroke:black; stroke-width:3;" />
+  <text x="6" y="30" style="font-size:25px;">HTML</text>
+</g>
+
+<g id="htmljs3">
+  <polyline points="81,1 185,1 219,34 219,131 81,131 81,0" style="fill:blue; stroke:black; stroke-width:3;" />
+  <polyline points="81,45 185,45 219,78 219,131 81,131 81,0" style="fill:blue; stroke:black; stroke-width:3;" />
+  <polyline points="81,89 185,89 219,122 219,131 81,131 81,0" style="fill:blue; stroke:black; stroke-width:3;" />
+  <text x="120" y="30" style="font-size:25px;">JS</text>
+  <text x="120" y="74" style="font-size:25px;">JS</text>
+  <text x="120" y="118" style="font-size:25px;">JS</text>
+  <polyline points="0,1 80,1 114,39 114,39 114,131 1,131 1,0" style="fill:red; stroke:black; stroke-width:3;" />
+  <text x="6" y="30" style="font-size:25px;">HTML</text>
+</g>
+
+<g id="htmljs4">
+  <polyline points="81,1 185,1 219,34 219,131 81,131 81,0" style="fill:blue; stroke:black; stroke-width:3;" />
+  <polyline points="81,34 185,34 219,67 219,131 81,131 81,0" style="fill:blue; stroke:black; stroke-width:3;" />
+  <polyline points="81,67 185,67 219,100 219,131 81,131 81,0" style="fill:blue; stroke:black; stroke-width:3;" />
+  <polyline points="81,100 185,100 217,131 81,131 81,0" style="fill:blue; stroke:black; stroke-width:3;" />
+  <text x="120" y="25" style="font-size:25px;">JS</text>
+  <text x="120" y="58" style="font-size:25px;">JS</text>
+  <text x="120" y="91" style="font-size:25px;">JS</text>
+  <text x="120" y="124" style="font-size:25px;">JS</text>
+  <polyline points="1,1 80,1 114,39 114,39 114,131 1,131 1,0" style="fill:red; stroke:black; stroke-width:3;" />
+  <text x="6" y="30" style="font-size:25px;">HTML</text>
+</g>
+
+<rect x="0" y="0" width="250" height="250" style="fill:white" />`;
+
 const svgEnd = '</svg>';
 
 /*
@@ -212,7 +285,8 @@ of the construction, when all components will be put at their own place
 */
 
 let svgBody = '<rect x="1" y="1" width="1998" height="998" style="fill:white; stroke:black; stroke-width:2px;" /><path d="M1000,0 v0,1000" style="stroke:black; stroke-width:4px; stroke-dasharray:5,5;" />';
-svgBody += '<text x="20" y="40" style="font-size:30px">Client side</text><text x="1850" y="40" style="font-size:30px">Server side</text>';
+//svgBody += '<text x="20" y="40" style="font-size:30px">Client side</text><text x="1850" y="40" style="font-size:30px">Server side</text>';
+
 
 const el = HTMLCLIENT.files[0].hyperlinks[0];
 let hyp = [];
@@ -464,59 +538,63 @@ a database could be implemented
 */
 
 
-// List of caracteristics of SVG pre-defined patterns that will be called by
-// javascript
+/* List of caracteristics of SVG pre-defined patterns that will be called by
+javascript
+Patterns will be placed according to the coordinates of their
+top left hand side corner, as it is done in svg
+*/
 
 let phw = [
   {
     name: 'js',
     // Size of the pattern
-    h: 132,
-    width: 119.8,
+    height: 132,
+    width: 120,
     // Points where arrows can be linked to the box (clockwise)
-    linkpoints: [[0, -65], [60, 0], [0, 65], [-60, 0]],
+    // Array of directions from the top left hand corner
+    linkpoints: [[60, 0], [120, 65], [60, 130], [0, 65]],
   },
   {
     name: 'html',
     height: 132,
-    width: 119.8,
-    linkpoints: [[0, -65], [60, 0], [0, 65], [-60, 0]],
+    width: 120,
+    linkpoints: [[60, 0], [120, 65], [60, 130], [0, 65]],
   },
   {
     name: 'db',
     height: 130,
     width: 122,
-    linkpoints: [[0, -64], [59, 0], [0, 64], [-59, 0]],
+    linkpoints: [[60, 0], [120, 65], [60, 130], [0, 65]],
   },
   {
     name: 'htmljs1',
     height: 132,
-    width: 219.8,
-    linkpoints: [[0, -65], [105.5, 0], [0, 65], [-105.5, 0]],
+    width: 220,
+    linkpoints: [[105, 0], [210, 65], [105, 130], [0, 65]],
   },
   {
     name: 'htmljs2',
     height: 132,
-    width: 219.8,
-    linkpoints: [[0, -65], [105.5, 0], [0, 65], [-105.5, 0]],
+    width: 220,
+    linkpoints: [[105, 0], [210, 65], [105, 130], [0, 65]],
   },
   {
     name: 'htmljs3',
     height: 132,
-    width: 219.8,
-    linkpoints: [[0, -65], [105.5, 0], [0, 65], [-105.5, 0]],
+    width: 220,
+    linkpoints: [[105, 0], [210, 65], [105, 130], [0, 65]],
   },
   {
     name: 'htmljs4',
     height: 132,
-    width: 219.8,
-    linkpoints: [[0, -65], [105.5, 0], [0, 65], [-105.5, 0]],
+    width: 220,
+    linkpoints: [[105, 0], [210, 65], [105, 130], [0, 65]],
   },
 ];
 
 /* Function which finds the relative position between two elements and returns
 an integer according to the position map below
-Map of positions in the space :
+map of positions in the space :
         |
         1
     8   |   2
@@ -580,7 +658,6 @@ function arrowBetween(el1, coor1, el2, coor2) {
       n2 = k;
     }
   }
-  alert('Names not found :' + n1 == 0 && n2 == 0);
   const pos = relPos(coor1[0], coor1[1], coor2[0], coor2[1]);
   let pointstolink = [];
   switch (pos) {
@@ -615,4 +692,205 @@ function arrowBetween(el1, coor1, el2, coor2) {
 
 // alert(arrowBetween('htmljs1', [300, 300], 'database', [500, 500]));
 
+/* Tracing test
+svgBody += '<use x="30" y="80" xlink:href="#db"/><use x="300" y="200" xlink:href="#htmljs3"/>';
+let arr = arrowBetween('db', [30, 80], 'htmljs3', [300, 200]);
+svgBody += `<line x1="${arr[0][0]}" y1="${arr[0][1]}" x2="${arr[1][0]}" y2="${arr[1][1]}" style="stroke:black; stroke-width:1px;">`;
+*/
+
+// Layering ellements on the drawing
+
+let arrbis = [];
+let map = [];
+for (let k = 0; k < 5000; k += 1) {
+  arrbis.push(0);
+}
+for (let k = 0; k < 5000; k += 1) {
+  map.push(arrbis.slice(0));
+}
+
+function fillComponent(arr, name, coor) {
+  let n = 0;
+  for (let k = 0; k < phw.length; k += 1) {
+    let test = phw[k].name;
+    if (test === name) {
+      n = k;
+    }
+  }
+  for (let g = coor[1]; g < coor[1] + phw[n].height; g += 1) {
+    for (let i = coor[0]; i < coor[0] + phw[n].width; i += 1) {
+      arr[g][i] = 1;
+    }
+  }
+}
+
+// fillComponent('db', [20, 20]);
+// alert('True : ' + arr[30][30] + '  /  False : ' + arr[200][150]);
+
+// Number of crossing lines
+let numbercross = 0;
+
+// Number of overlapped components
+let numberover = 0;
+
+// Boolean to know if the line or component that we meet in the graph has already been counted or not
+let samecomp = false;
+let sameline = false;
+
+// Function tracing the map and counting the different numbers
+function fillLine(arr, coor1, coor2) {
+  let dy;
+  let yb;
+  let xb;
+  const dx = Math.abs(coor1[0] - coor2[0]);
+  // Case of a vertical line
+  if (coor1[0] === coor2[0]) {
+    const xeq = coor1[0];
+    const dy = Math.abs(coor1[1] - coor2[1]);
+    coor1[1] < coor2[0] ? yb = coor1[1] : yb = coor2[1];
+    for (let k = yb + 5; k < dy - 4; k += 1) {
+      let test = arr[k][xeq];
+      switch (test) {
+        case 0:
+          if (((arr[k][xeq - 1] % 2 === 0 && arr[k][xeq - 1] !== 0) || (arr[k][xeq + 1] % 2 === 0 && arr[k][xeq + 1] !== 0)) && !sameline) {
+            numbercross += 1;
+            sameline = true;
+          } else if (arr[k][xeq - 1] === 0 && arr[k][xeq + 1] === 0) {
+            sameline = false;
+          }
+          samecomp = false;
+          break;
+        case 1:
+          if (!samecomp) {
+            numberover += 1;
+            samecomp = true;
+            sameline = false;
+          } else if ((arr[k][xeq - 1] === 3 || arr[k][xeq + 1] === 3) && !sameline) {
+            numbercross += 1;
+            sameline = true;
+          } else if ((arr[k][xeq - 1] === 3 || arr[k][xeq + 1] === 3) && sameline) {
+            sameline = true;
+          } else {
+            sameline = false;
+          }
+          break;
+        case 2:
+          if (!sameline) {
+            numbercross += 1;
+            sameline = true;
+          }
+          samecomp = false;
+          break;
+        case 3:
+          if (!sameline) {
+            numbercross += 1;
+            sameline = true;
+          }
+          break;
+        case 4:
+          if (!sameline) {
+            numbercross += 1;
+            sameline = true;
+          }
+          samecomp = false;
+          break;
+        default:
+          alert('Default case for fillLine method !');
+      }
+      arr[k][xeq] += 2;
+    }
+  }
+  // Other cases
+  else {
+    // Looking for the lowest x coordinate
+    if (coor1[0] < coor2[0]) {
+      dy = coor1[1] - coor2[1];
+      xb = coor1[0];
+      yb = coor1[1];
+    } else {
+      dy = coor2[1] - coor1[1];
+      xb = coor2[0];
+      yb = coor2[1];
+    }
+    // Calculating the slope in order to follow the line from the lowest x coordinate
+    const slope = -dy / dx;
+    let fp = Math.round(yb + (4 * slope));
+    // Following the line
+    for (let k = xb + 5; k < (xb + dx) - 9; k += 1) {
+      fp += slope;
+      const v = Math.round(fp);
+      const testb = arr[v][k];
+      // Different cases according to what the line is crossing or not
+      switch (testb) {
+        // Need to check if we are not avoiding for one case a line (or plenty of) crossed
+        case 0:
+          if (((arr[v - 1][k] % 2 === 0 && arr[v - 1][k] !== 0) || (arr[v + 1][k] % 2 === 0 && arr[v + 1][k] !== 0)) && !sameline) {
+            numbercross += 1;
+            sameline = true;
+          } else if ((arr[v - 1][k] === 0) && (arr[v + 1][k] === 0)) {
+            sameline = false;
+          }
+          samecomp = false;
+          break;
+        // If the line is overlapping a component
+        case 1:
+          if (!samecomp) {
+            numberover += 1;
+            samecomp = true;
+            sameline = false;
+          } else if ((arr[v - 1][k] === 3 || arr[v + 1][k] === 3) && !sameline) {
+            numbercross += 1;
+            sameline = true;
+          } else if ((arr[v - 1][k] === 3 || arr[v + 1][k] === 3) && sameline) {
+            sameline = true;
+          } else {
+            sameline = false;
+          }
+          break;
+        // If the line is explicitely crossing another line
+        case 2:
+          if (!sameline) {
+            numbercross += 1;
+            sameline = true;
+          }
+          samecomp = false;
+          break;
+        // If the line is crossing another, overlapping a component
+        case 3:
+          if (!sameline) {
+            numbercross += 1;
+            sameline = true;
+          }
+          break;
+        // If a line is crossing 2 others at the sami time (rare)
+        case 4:
+          if (!sameline) {
+            numbercross += 1;
+            sameline = true;
+          }
+          samecomp = false;
+          break;
+        // Normally all other cases are almost impossible...
+        default:
+          alert('Default case for fillLine method !');
+      }
+      // Adding to the map the new line traced
+      arr[v][k] += 2;
+      arr[v - 1][k] += 2;
+      arr[v + 1][k] += 2;
+    }
+  }
+  sameline = false;
+  samecomp = false;
+  return [numbercross, numberover];
+}
+
+// fillLine(map, [2, 2], [100, 100]);
+// fillLine(map, [30, 100], [80, 2]);
+// fillLine(map, [2, 22], [100, 22]);
+// fillLine(map, [45, 2], [45, 100]);
+// fillLine(map, [45, 2], [75, 100]);
+// const testf = fillLine(map, [2, 50], [100, 25]);
+// alert(testf);
+// svgBody += '<line x1="2" y1="2" x2="100" y2="100" style="stroke:black;"/><line x1="30" y1="100" x2="80" y2="2" style="stroke:black;" /><line x1="2" y1="22" x2="100" y2="22" style="stroke:black;" /><line x1="45" y1="2" x2="45" y2="100" style="stroke:black;" /><line x1="45" y1="2" x2="75" y2="100" style="stroke:black;" /><line x1="2" y1="50" x2="100" y2="25" style="stroke:black;" />';
 document.querySelector('#graph').innerHTML = svgStart + svgBody + svgEnd;
