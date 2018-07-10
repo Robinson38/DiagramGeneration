@@ -109,67 +109,67 @@ const HTMLCLIENT = {
   files: [
     {
       name: 'index',
-      jsclientlinks: ['index'],
+      jsClientLinks: ['index'],
       jsserverlinks: [],
-      csslinks: ['sums'],
+      cssLinks: ['sums'],
       hyperlinks: ['home'],
-      externallinks: ['apis.google.com/js/platform.js'],
+      externalLinks: ['apis.google.com/js/platform.js'],
     },
     {
       name: 'home',
-      jsclientlinks: ['home', 'common'],
+      jsClientLinks: ['home', 'common'],
       jsserverlinks: ['statuses', 'api'],
-      csslinks: ['sums'],
+      cssLinks: ['sums'],
       hyperlinks: ['project-overview'],
-      externallinks: ['apis.google.com/js/platform.js'],
+      externalLinks: ['apis.google.com/js/platform.js'],
     },
     {
       name: 'project-overview',
-      jsclientlinks: ['project-overview', 'common'],
+      jsClientLinks: ['project-overview', 'common'],
       jsserverlinks: ['statuses', 'api'],
-      csslinks: ['sums'],
+      cssLinks: ['sums'],
       hyperlinks: ['home', 'project-marking', 'project-compare'],
-      externallinks: ['apis.google.com/js/platform.js'],
+      externalLinks: ['apis.google.com/js/platform.js'],
     },
     {
       name: 'project-marking',
-      jsclientlinks: ['project-marking', 'common'],
+      jsClientLinks: ['project-marking', 'common'],
       jsserverlinks: ['marking-calculations', 'api'],
-      csslinks: ['sums'],
+      cssLinks: ['sums'],
       hyperlinks: ['home', 'project-overview'],
-      externallinks: ['apis.google.com/js/platform.js'],
+      externalLinks: ['apis.google.com/js/platform.js'],
     },
     {
       name: 'project-compare',
-      jsclientlinks: ['project-compare', 'common'],
+      jsClientLinks: ['project-compare', 'common'],
       jsserverlinks: ['marking-calculations', 'api'],
-      csslinks: ['sums'],
+      cssLinks: ['sums'],
       hyperlinks: ['home', 'project-overview'],
-      externallinks: ['apis.google.com/js/platform.js'],
+      externalLinks: ['apis.google.com/js/platform.js'],
     },
     {
       name: 'admin',
-      jsclientlinks: ['admin', 'common', 'sort-table'],
+      jsClientLinks: ['admin', 'common', 'sort-table'],
       jsserverlinks: ['statuses', 'api'],
-      csslinks: ['sums'],
+      cssLinks: ['sums'],
       hyperlinks: ['admin-project-overview'],
-      externallinks: ['apis.google.com/js/platform.js'],
+      externalLinks: ['apis.google.com/js/platform.js'],
     },
     {
       name: 'admin-project-overview',
-      jsclientlinks: ['admin', 'common'],
+      jsClientLinks: ['admin', 'common'],
       jsserverlinks: ['statuses', 'api'],
-      csslinks: ['sums'],
+      cssLinks: ['sums'],
       hyperlinks: ['admin'],
-      externallinks: ['apis.google.com/js/platform.js'],
+      externalLinks: ['apis.google.com/js/platform.js'],
     },
     {
       name: 'criteria',
-      jsclientlinks: ['criteria', 'common'],
+      jsClientLinks: ['criteria', 'common'],
       jsserverlinks: ['api'],
-      csslinks: ['sums'],
+      cssLinks: ['sums'],
       hyperlinks: [],
-      externallinks: ['apis.google.com/js/platform.js'],
+      externalLinks: ['apis.google.com/js/platform.js'],
     },
   ],
 };
@@ -179,75 +179,75 @@ const JSSERVER = {
   files: [
     {
       name: 'index',
-      jsdatalinks: ['config'],
-      jsmethodslinks: ['emails', 'NotFoundError', 'api'],
-      externallinks: [],
+      jsDataLinks: ['config'],
+      jsMethodsLinks: ['emails', 'NotFoundError', 'api'],
+      externalLinks: [],
     },
     {
       name: 'api',
-      jsdatalinks: ['config'],
-      jsmethodslinks: ['tools', 'marking-calculations', 'NotFoundError', 'BadRequestError', 'ConflictError', 'ForbiddenError', 'db-datastore'],
-      externallinks: [],
+      jsDataLinks: ['config'],
+      jsMethodsLinks: ['tools', 'marking-calculations', 'NotFoundError', 'BadRequestError', 'ConflictError', 'ForbiddenError', 'db-datastore'],
+      externalLinks: [],
     },
     {
       name: 'config',
-      jsdatalinks: [],
-      jsmethodslinks: [],
-      externallinks: [],
+      jsDataLinks: [],
+      jsMethodsLinks: [],
+      externalLinks: [],
     },
     {
       name: 'emails',
-      jsdatalinks: ['config'],
-      jsmethodslinks: ['tools'],
-      externallinks: ['@sendgrid/mail'],
+      jsDataLinks: ['config'],
+      jsMethodsLinks: ['tools'],
+      externalLinks: ['@sendgrid/mail'],
     },
     {
       name: 'tools',
-      jsdatalinks: [],
-      jsmethodslinks: [],
-      externallinks: [],
+      jsDataLinks: [],
+      jsMethodsLinks: [],
+      externalLinks: [],
     },
     {
       name: 'db-datastore',
-      jsdatalinks: ['config'],
-      jsmethodslinks: ['tools', 'emails', 'marking-calculations', 'ConflictError', 'statuses'],
-      externallinks: ['@google-cloud/databstore'],
+      jsDataLinks: ['config'],
+      jsMethodsLinks: ['tools', 'emails', 'marking-calculations', 'ConflictError', 'statuses'],
+      externalLinks: ['@google-cloud/databstore'],
     },
     {
       name: 'statuses',
-      jsdatalinks: [],
-      jsmethodslinks: [],
-      externallinks: [],
+      jsDataLinks: [],
+      jsMethodsLinks: [],
+      externalLinks: [],
     },
     {
       name: 'marking-calculations',
-      jsdatalinks: [],
-      jsmethodslinks: [],
-      externallinks: [],
+      jsDataLinks: [],
+      jsMethodsLinks: [],
+      externalLinks: [],
     },
     {
       name: 'BadRequest',
-      jsdatalinks: [],
-      jsmethodslinks: [],
-      externallinks: [],
+      jsDataLinks: [],
+      jsMethodsLinks: [],
+      externalLinks: [],
     },
     {
       name: 'ConflictError',
-      jsdatalinks: [],
-      jsmethodslinks: [],
-      externallinks: [],
+      jsDataLinks: [],
+      jsMethodsLinks: [],
+      externalLinks: [],
     },
     {
       name: 'ForbiddenError',
-      jsdatalinks: [],
-      jsmethodslinks: [],
-      externallinks: [],
+      jsDataLinks: [],
+      jsMethodsLinks: [],
+      externalLinks: [],
     },
     {
       name: 'NotFoundError',
-      jsdatalinks: [],
-      jsmethodslinks: [],
-      externallinks: [],
+      jsDataLinks: [],
+      jsMethodsLinks: [],
+      externalLinks: [],
     },
   ],
   folders: [
@@ -287,6 +287,11 @@ of the construction, when all components will be put at their own place
 let svgBody = '<rect x="1" y="1" width="1998" height="998" style="fill:white; stroke:black; stroke-width:2px;" /><path d="M1000,0 v0,1000" style="stroke:black; stroke-width:4px; stroke-dasharray:5,5;" />';
 // svgBody += '<text x="20" y="40" style="font-size:30px">Client side</text><text x="1850" y="40" style="font-size:30px">Server side</text>';
 
+// Add to the html page tag given the text given
+function addToHtmlPage(tag, text) {
+  document.querySelector(tag).innerHTML = text;
+}
+
 /* 1st method :
 Detecting hierarchy between HTML files within the client side
 
@@ -296,33 +301,32 @@ the hierachy, a hierarchy will be  find for each of the 'top files'
 */
 
 // Creation of an index for HTML files
-function htmlFileList() {
+function htmlFileList(obj) {
   const indexHTML = [];
-  for (let k = 0; k < HTMLCLIENT.files.length; k += 1) {
-    indexHTML.push(HTMLCLIENT.files[k].name);
+  for (let k = 0; k < obj.files.length; k += 1) {
+    indexHTML.push(obj.files[k].name);
   }
   return indexHTML;
 }
 
 // List of html client files names
-function hyperlinkedHtml() {
+function hyperlinkedHtml(obj) {
   const hyp = [];
-  for (let k = 0; k < HTMLCLIENT.files.length; k += 1) {
-    for (let j = 0; j < HTMLCLIENT.files[k].hyperlinks.length; j += 1) {
-      hyp.push(HTMLCLIENT.files[k].hyperlinks[j]);
+  for (let k = 0; k < obj.files.length; k += 1) {
+    for (let j = 0; j < obj.files[k].hyperlinks.length; j += 1) {
+      hyp.push(obj.files[k].hyperlinks[j]);
     }
   }
   return hyp;
 }
 
 // Find the top of the hierarchy
-function findTopHierarchy() {
+function findTopHierarchy(obj) {
   const toph = [];
-  let s;
-  const hyp = hyperlinkedHtml();
-  for (let k = 0; k < HTMLCLIENT.files.length; k += 1) {
-    s = HTMLCLIENT.files[k].name;
-    if (hyp.indexOf(s) === -1 && HTMLCLIENT.files[k].hyperlinks.length !== 0) {
+  const hyp = hyperlinkedHtml(obj);
+  for (let k = 0; k < obj.files.length; k += 1) {
+    const s = obj.files[k].name;
+    if (hyp.indexOf(s) === -1 && obj.files[k].hyperlinks.length !== 0) {
       toph.push(s);
     }
   }
@@ -330,54 +334,52 @@ function findTopHierarchy() {
 }
 
 // Find all the hierarchies on client side
-function findHierarchies() {
-  const globalnamelist = [];
-  let j = 0;
-  const toph = findTopHierarchy();
+function findHierarchies(obj) {
+  const globalNameList = [];
+  const toph = findTopHierarchy(obj);
+  const indexHTML = htmlFileList(obj);
   // List of all the hierarchies in our client side
-  const allhierarchies = [];
+  const allHierarchies = [];
+  const nameList = [];
   // Doing the loop on all possible hierarchies found before
-  for (let k = 0; k < toph.length; k += 1) {
+  for (const topHier of toph) {
     // Rank in the hierarchy
-    let rk = 1;
-    let cur = toph[k];
+    let rk = 0;
+    let currentIndexFile = 0;
     // List with names of elements already seen in the hierarchy
-    const namelist = [cur];
-    globalnamelist.push(cur);
-    const hierarchy = [[cur, rk]];
+    nameList.push(topHier);
+    globalNameList.push(topHier);
+    const hierarchy = [[topHier, rk]];
     // Number of new files added
     let n = 1;
     let nbis = 1;
+    let cur = topHier;
     // Take the last element on the list to search for where it is hyperlinking
-    while (j < hierarchy.length) {
-      j += 1;
+    while (currentIndexFile < hierarchy.length) {
+      currentIndexFile += 1;
       rk += 1;
       // Iteration on all news files added to the hierarchy the step before
       for (let m = 0; m < nbis; m += 1) {
-        const indexHTML = htmlFileList();
-        const hyp = HTMLCLIENT.files[indexHTML.indexOf(cur)].hyperlinks;
+        const hyp = obj.files[indexHTML.indexOf(cur)].hyperlinks;
         // Searching for the files hyperlinked which are not already ordered
-        for (let file of hyp) {
-          if (namelist.indexOf(file) === -1) {
+        for (const file of hyp) {
+          if (nameList.indexOf(file) === -1) {
             hierarchy.push([file, rk]);
-            namelist.push(file);
-            globalnamelist.push(file);
+            nameList.push(file);
+            globalNameList.push(file);
             n += 1;
           }
         }
         n -= 1;
-        cur = namelist[j + m];
+        cur = nameList[currentIndexFile + m];
       }
       nbis = n;
       n = 1;
     }
-    allhierarchies.push(hierarchy);
+    allHierarchies.push(hierarchy);
   }
-  return [allhierarchies, globalnamelist];
+  return [allHierarchies, nameList];
 }
-
-const [allhierarchies, globalnamelist] = findHierarchies();
-// alert(allhierarchies);
 
 /* 2nd method :
 Detecting files which might be in the 'common part' of the client side because
@@ -389,67 +391,62 @@ frequencies of the JS files only.
 */
 
 // Returns the name and frequency of use of each file
-function frequencyUsedFiles() {
-  const jsname = [];
-  const cssname = [];
-  const extname = [];
-  const jsfreq = [];
-  const cssfreq = [];
-  const extfreq = [];
+function frequencyUsedFiles(obj) {
+  const jsName = [];
+  const cssName = [];
+  const extName = [];
+  const jsFreq = [];
+  const cssFreq = [];
+  const extFreq = [];
   let n = 0;
   // Counting of differents files linked in each category
-  for (let el of HTMLCLIENT.files) {
+  for (const el of obj.files) {
     n += 1;
-    for (let js of el.jsclientlinks) {
-      if (jsname.indexOf(js) === -1) {
-        jsname.push(js);
-        jsfreq.push(0);
+    for (const js of el.jsClientLinks) {
+      if (jsName.indexOf(js) === -1) {
+        jsName.push(js);
+        jsFreq.push(0);
       }
-      jsfreq[jsname.indexOf(js)] += 1;
+      jsFreq[jsName.indexOf(js)] += 1;
     }
-    for (let css of el.csslinks) {
-      if(cssname.indexOf(css) === -1) {
-        cssname.push(css);
-        cssfreq.push(0);
+    for (const css of el.cssLinks) {
+      if (cssName.indexOf(css) === -1) {
+        cssName.push(css);
+        cssFreq.push(0);
       }
-      cssfreq[cssname.indexOf(css)] += 1;
+      cssFreq[cssName.indexOf(css)] += 1;
     }
-    for (let ext of el.externallinks) {
-      if (extname.indexOf(ext) === -1) {
-        extname.push(ext);
-        extfreq.push(0);
+    for (const ext of el.externalLinks) {
+      if (extName.indexOf(ext) === -1) {
+        extName.push(ext);
+        extFreq.push(0);
       }
-      extfreq[extname.indexOf(ext)] += 1;
+      extFreq[extName.indexOf(ext)] += 1;
     }
   }
   // Division by the number of files at first in order to have a using-frequency
-  for (let k = 0; k < jsfreq.length; k += 1) {
-    jsfreq[k] /= n;
+  for (let k = 0; k < jsFreq.length; k += 1) {
+    jsFreq[k] /= n;
   }
-  for (let k = 0; k < cssfreq.length; k += 1) {
-    cssfreq[k] /= n;
+  for (let k = 0; k < cssFreq.length; k += 1) {
+    cssFreq[k] /= n;
   }
-  for (let k = 0; k < extfreq.length; k += 1) {
-    extfreq[k] /= n;
+  for (let k = 0; k < extFreq.length; k += 1) {
+    extFreq[k] /= n;
   }
   // Returns list of file name and list of files' frequency
-  return [[jsname, cssname, extname], [jsfreq, cssfreq, extfreq]];
+  return [[jsName, cssName, extName], [jsFreq, cssFreq, extFreq]];
 }
 
-// alert(jsfreq);
-// alert(cssfreq);
-// alert(extfreq);
-
 // Threshold calculation
-function commonThreshold() {
-  const [, [jsfreq, cssfreq, extfreq]] = frequencyUsedFiles();
-  alert([jsfreq, cssfreq, extfreq]);
-  const cpjs = jsfreq.slice(0);
+function commonThreshold(obj) {
+  const [, [jsFreq, cssFreq, extFreq]] = frequencyUsedFiles(obj);
+  const cpjs = jsFreq.slice(0);
   let maxi = Math.max(...cpjs);
   // Array with the gaps
   const gap = [];
   // Array with the value after each gap
-  const valbefgap = [];
+  const valBefGap = [];
   // Filling the arrays defined before
   while (cpjs.length > 0) {
     let k = 0;
@@ -463,16 +460,16 @@ function commonThreshold() {
     if (cpjs.length > 0) {
       const omaxi = Math.max(...cpjs);
       gap.push(maxi - omaxi);
-      valbefgap.push(maxi);
+      valBefGap.push(maxi);
       maxi = omaxi;
     }
   }
   // Threshold definition : use the maximum gap
-  const maxigap = Math.max(...gap);
+  const maxiGap = Math.max(...gap);
   let threshold;
-  const test = valbefgap[gap.indexOf(maxigap)] - (0.1 * maxigap);
+  const test = valBefGap[gap.indexOf(maxiGap)] - (0.1 * maxiGap);
   if (test > 0.6) {
-    threshold = valbefgap[gap.indexOf(maxigap)] - (0.1 * maxigap);
+    threshold = valBefGap[gap.indexOf(maxiGap)] - (0.1 * maxiGap);
   } else {
     // Default value of threshold
     threshold = 0.66;
@@ -480,53 +477,45 @@ function commonThreshold() {
   return threshold;
 }
 
-// alert(threshold);
-
 // Creation of the 'common client side files'
-function findCommonClientFiles() {
-  const threshold = commonThreshold();
-  const [[jsname, cssname, extname], [jsfreq, cssfreq, extfreq]] = frequencyUsedFiles();
-  const jscommon = [];
-  const csscommon = [];
-  const extcommon = [];
-  for (let k = 0; k < jsfreq.length; k += 1) {
-    if (jsfreq[k] >= threshold) {
-      jscommon.push(jsname[k]);
+function findCommonClientFiles(obj) {
+  const threshold = commonThreshold(obj);
+  const [[jsName, cssName, extName], [jsFreq, cssFreq, extFreq]] = frequencyUsedFiles(obj);
+  const jsCommon = [];
+  const cssCommon = [];
+  const extCommon = [];
+  for (let k = 0; k < jsFreq.length; k += 1) {
+    if (jsFreq[k] >= threshold) {
+      jsCommon.push(jsName[k]);
     }
   }
-  for (let k = 0; k < cssfreq.length; k += 1) {
-    if (cssfreq[k] >= threshold) {
-      csscommon.push(cssname[k]);
+  for (let k = 0; k < cssFreq.length; k += 1) {
+    if (cssFreq[k] >= threshold) {
+      cssCommon.push(cssName[k]);
     }
   }
-  for (let k = 0; k < extfreq.length; k += 1) {
-    if (extfreq[k] >= threshold) {
-      extcommon.push(extname[k]);
+  for (let k = 0; k < extFreq.length; k += 1) {
+    if (extFreq[k] >= threshold) {
+      extCommon.push(extName[k]);
     }
   }
-  return [jscommon, csscommon, extcommon];
+  return [jsCommon, cssCommon, extCommon];
 }
-
-// const [jscommon, csscommon, extcommon] = findCommonClientFiles();
-// alert(jscommon);
-// alert(csscommon);
-// alert(extcommon);
 
 /* 3rd method
 Detecting 'toolbox' on server side
 */
 
 // Find 'toolbox' files, namely, files only called by others
-function findToolbox() {
+function findToolbox(obj) {
   const toolbox = [];
-  for (let el of JSSERVER.files) {
-    if (el.jsdatalinks.length === 0 && el.jsmethodslinks.length === 0 && el.externallinks.length === 0) {
+  for (const el of obj.files) {
+    if (el.jsDataLinks.length === 0 && el.jsMethodsLinks.length === 0 && el.externalLinks.length === 0) {
       toolbox.push(el.name);
     }
   }
+  return toolbox;
 }
-
-// alert(toolbox);
 
 /* 4th method
 Detecting files hyperlinked without hierarchy, in order to put them
@@ -534,25 +523,24 @@ in the same box on the client side
 */
 
 // For unhierarchized files, find which are linked and those who are alone
-function findDisorderedFiles(hierarchyNameList) {
+function findDisorderedFiles(nameList, obj) {
+  const hierarchyNameList = nameList.slice(0);
   let li = [];
-  const otherboxes = [];
-  for (let el of HTMLCLIENT.files) {
+  const otherBoxes = [];
+  for (const el of obj.files) {
     if (hierarchyNameList.indexOf(el.name) === -1) {
       li = [];
       hierarchyNameList.push(el.name);
       li.push(el.name);
-      for (let file of el.hyperlinks) {
+      for (const file of el.hyperlinks) {
         hierarchyNameList.push(file);
         li.push(file);
       }
-      otherboxes.push(li);
+      otherBoxes.push(li);
     }
   }
-  return otherboxes;
+  return otherBoxes;
 }
-
-// alert(otherboxes);
 
 /* 5th method
 Renaming of external links because they often have difficult names
@@ -583,43 +571,43 @@ const phw = [
     width: 120,
     // Points where arrows can be linked to the box (clockwise)
     // Array of directions from the top left hand corner
-    linkpoints: [[60, 0], [120, 65], [60, 130], [0, 65]],
+    linkPoints: [[60, 0], [120, 65], [60, 130], [0, 65]],
   },
   {
     name: 'html',
     height: 132,
     width: 120,
-    linkpoints: [[60, 0], [120, 65], [60, 130], [0, 65]],
+    linkPoints: [[60, 0], [120, 65], [60, 130], [0, 65]],
   },
   {
     name: 'db',
     height: 130,
     width: 122,
-    linkpoints: [[60, 0], [120, 65], [60, 130], [0, 65]],
+    linkPoints: [[60, 0], [120, 65], [60, 130], [0, 65]],
   },
   {
     name: 'htmljs1',
     height: 132,
     width: 220,
-    linkpoints: [[105, 0], [210, 65], [105, 130], [0, 65]],
+    linkPoints: [[105, 0], [210, 65], [105, 130], [0, 65]],
   },
   {
     name: 'htmljs2',
     height: 132,
     width: 220,
-    linkpoints: [[105, 0], [210, 65], [105, 130], [0, 65]],
+    linkPoints: [[105, 0], [210, 65], [105, 130], [0, 65]],
   },
   {
     name: 'htmljs3',
     height: 132,
     width: 220,
-    linkpoints: [[105, 0], [210, 65], [105, 130], [0, 65]],
+    linkPoints: [[105, 0], [210, 65], [105, 130], [0, 65]],
   },
   {
     name: 'htmljs4',
     height: 132,
     width: 220,
-    linkpoints: [[105, 0], [210, 65], [105, 130], [0, 65]],
+    linkPoints: [[105, 0], [210, 65], [105, 130], [0, 65]],
   },
 ];
 
@@ -634,39 +622,31 @@ map of positions in the space :
         5
         |
 */
-function relPos(x1, y1, x2, y2) {
+function relPos(point1, point2) {
   let pos = 0;
-  const cx = x1 - x2;
-  const cy = y1 - y2;
+  const cx = point1.x - point2.x;
+  const cy = point1.y - point2.y;
   if (cx === 0 && cy === 0) {
-    return 'Elements have the same position !';
+    // Elements have the same position
+    return 0;
   } else if (cx === 0) {
-    cy > 0 ? pos = 1 : pos = 5;
+    pos = cy > 0 ? 1 : 5;
   } else if (cy === 0) {
-    cx > 0 ? pos = 7 : pos = 3;
+    pos = cx > 0 ? 7 : 3;
   } else if (cx > 0) {
-    cy > 0 ? pos = 8 : pos = 6;
+    pos = cy > 0 ? 8 : 6;
   } else {
-    cy > 0 ? pos = 2 : pos = 4;
+    pos = cy > 0 ? 2 : 4;
   }
   return pos;
 }
-
-// alert(relPos(4,4,4,2));
-// alert(relPos(4,4,6,2));
-// alert(relPos(4,4,6,4));
-// alert(relPos(4,4,6,6));
-// alert(relPos(4,4,4,6));
-// alert(relPos(4,4,2,6));
-// alert(relPos(4,4,2,4));
-// alert(relPos(4,4,2,2));
-// alert(relPos(4,4,4,4));
 
 // Function adding elements of 2 arrays situated at the same index
 function addArr(arr1, arr2) {
   const sub = [];
   if (arr1.length !== arr2.length) {
-    return 'Arrays don\'t have the same size !';
+    // Arrays don't have the same size
+    return 0;
   }
   for (let k = 0; k < arr1.length; k += 1) {
     sub.push(arr1[k] + arr2[k]);
@@ -676,50 +656,74 @@ function addArr(arr1, arr2) {
 
 // Function which according to the relative position of 2 elements,
 // returns the best arrow between them
-function arrowBetween(el1, p1, el2, p2) {
+function arrowBetween(el1, point1, el2, point2) {
   let n1 = 0;
   let n2 = 0;
   for (let k = 0; k < phw.length; k += 1) {
-    let name = phw[k].name;
+    const { name } = phw[k];
     if (name === el1) {
       n1 = k;
     } else if (name === el2) {
       n2 = k;
     }
   }
-  const pos = relPos(p1.x, p1.y, p2.x, p2.y);
-  const pointstolink = [];
+  const pos = relPos(point1.x, point1.y, point2.x, point2.y);
+  let point3;
+  let point4;
   switch (pos) {
     case 1:
-      pointstolink.push(addArr(phw[n1].linkpoints[0], [p1.x, p1.y]), addArr(phw[n2].linkpoints[2], [p2.x, p2.y]));
+      point3.x = phw[n1].linkpoints[0] + point1.x;
+      point3.y = phw[n1].linkpoints[0] + point1.y;
+      point4.x = phw[n2].linkpoints[2] + point2.x;
+      point4.y = phw[n2].linkpoints[2] + point2.y;
       break;
     case 2:
-      pointstolink.push(addArr(phw[n1].linkpoints[0], [p1.x, p1.y]), addArr(phw[n2].linkpoints[3], [p2.x, p2.y]));
+      point3.x = phw[n1].linkpoints[0] + point1.x;
+      point3.y = phw[n1].linkpoints[0] + point1.y;
+      point4.x = phw[n2].linkpoints[3] + point2.x;
+      point4.y = phw[n2].linkpoints[3] + point2.y;
       break;
     case 3:
-      pointstolink.push(addArr(phw[n1].linkpoints[1], [p1.x, p1.y]), addArr(phw[n2].linkpoints[3], [p2.x, p2.y]));
+      point3.x = phw[n1].linkpoints[1] + point1.x;
+      point3.y = phw[n1].linkpoints[1] + point1.y;
+      point4.x = phw[n2].linkpoints[3] + point2.x;
+      point4.y = phw[n2].linkpoints[3] + point2.y;
       break;
     case 4:
-      pointstolink.push(addArr(phw[n1].linkpoints[2], [p1.x, p1.y]), addArr(phw[n2].linkpoints[3], [p2.x, p2.y]));
+      point3.x = phw[n1].linkpoints[2] + point1.x;
+      point3.y = phw[n1].linkpoints[2] + point1.y;
+      point4.x = phw[n2].linkpoints[3] + point2.x;
+      point4.y = phw[n2].linkpoints[3] + point2.y;
       break;
     case 5:
-      pointstolink.push(addArr(phw[n1].linkpoints[2], [p1.x, p1.y]), addArr(phw[n2].linkpoints[0], [p2.x, p2.y]));
+      point3.x = phw[n1].linkpoints[2] + point1.x;
+      point3.y = phw[n1].linkpoints[2] + point1.y;
+      point4.x = phw[n2].linkpoints[0] + point2.x;
+      point4.y = phw[n2].linkpoints[0] + point2.y;
       break;
     case 6:
-      pointstolink.push(addArr(phw[n1].linkpoints[2], [p1.x, p1.y]), addArr(phw[n2].linkpoints[1], [p2.x, p2.y]));
+      point3.x = phw[n1].linkpoints[2] + point1.x;
+      point3.y = phw[n1].linkpoints[2] + point1.y;
+      point4.x = phw[n2].linkpoints[1] + point2.x;
+      point4.y = phw[n2].linkpoints[1] + point2.y;
       break;
     case 7:
-      pointstolink.push(addArr(phw[n1].linkpoints[3], [p1.x, p1.y]), addArr(phw[n2].linkpoints[1], [p2.x, p2.y]));
+      point3.x = phw[n1].linkpoints[3] + point1.x;
+      point3.y = phw[n1].linkpoints[3] + point1.y;
+      point4.x = phw[n2].linkpoints[1] + point2.x;
+      point4.y = phw[n2].linkpoints[1] + point2.y;
       break;
     case 8:
-      pointstolink.push(addArr(phw[n1].linkpoints[0], [p1.x, p1.y]), addArr(phw[n2].linkpoints[1], [p2.x, p2.y]));
+      point3.x = phw[n1].linkpoints[0] + point1.x;
+      point3.y = phw[n1].linkpoints[0] + point1.y;
+      point4.x = phw[n2].linkpoints[1] + point2.x;
+      point4.y = phw[n2].linkpoints[1] + point2.y;
       break;
-    default: return 'Bug somewhere !';
+    default:
+      return 'Bug somewhere !';
   }
-  return pointstolink;
+  return (point3, point4);
 }
-
-// alert(arrowBetween('htmljs1', [300, 300], 'database', [500, 500]));
 
 /* Tracing test
 svgBody += '<use x="30" y="80" xlink:href="#db"/><use x="300" y="200" xlink:href="#htmljs3"/>';
@@ -728,6 +732,7 @@ svgBody += `<line x1="${arr[0][0]}" y1="${arr[0][1]}" x2="${arr[1][0]}" y2="${ar
 */
 
 // Layering ellements on the drawing
+// CAUTION WITH COORDINATES !!! map[y][x]
 function initiateMap(width, height) {
   const arrbis = [];
   const map = [];
@@ -741,48 +746,45 @@ function initiateMap(width, height) {
 }
 
 // Function registering the component given in the array
-function fillComponent(arr, name, p) {
+function fillComponent(arr, name, point) {
   let n = 0;
   for (let k = 0; k < phw.length; k += 1) {
-    let test = phw[k].name;
+    const test = phw[k].name;
     if (test === name) {
       n = k;
     }
   }
-  for (let g = p.y; g < p.y + phw[n].height; g += 1) {
-    for (let i = p.x; i < p.x + phw[n].width; i += 1) {
-      arr[g][i] = 1;
+  for (let g = point.y; g < point.y + phw[n].height; g += 1) {
+    for (let i = point.x; i < point.x + phw[n].width; i += 1) {
+      arr[g][i] = 1; // eslint-disable-line no-param-reassign
     }
   }
 }
 
-// fillComponent('db', {x:20, y:20});
-// alert('True : ' + arr[30][30] + '  /  False : ' + arr[200][150]);
-
 // Function tracing the map and counting the different numbers
-function fillLine(arr, p1, p2) {
+function fillLine(arr, point1, point2) {
   let yb;
   let xb;
-  const dx = Math.abs(p1.x - p2.x);
+  const dx = Math.abs(point1.x - point2.x);
   // Number of crossing lines
-  let numbercross = 0;
+  let numberCross = 0;
   // Number of overlapped components
-  let numberover = 0;
+  let numberOver = 0;
   // Boolean to know if the line or component that we meet in the graph has already been counted or not
   let samecomp = false;
   let sameline = false;
   // Case of a vertical line
-  if (p1.x === p2.x) {
-    const xeq = p1.x;
-    const dy = Math.abs(p1.y - p2.y);
-    p1.y < p2.x ? yb = p1.y : yb = p2.y;
+  if (point1.x === point2.x) {
+    const xeq = point1.x;
+    const dy = Math.abs(point1.y - point2.y);
+    yb = point1.y < point2.x ? point1.y : point2.y;
     for (let k = yb + 5; k < dy - 4; k += 1) {
-      let test = arr[k][xeq];
+      const test = arr[k][xeq];
       switch (test) {
         case 0:
           if (((arr[k][xeq - 1] % 2 === 0 && arr[k][xeq - 1] !== 0) ||
           (arr[k][xeq + 1] % 2 === 0 && arr[k][xeq + 1] !== 0)) && !sameline) {
-            numbercross += 1;
+            numberCross += 1;
             sameline = true;
           } else if (arr[k][xeq - 1] === 0 && arr[k][xeq + 1] === 0) {
             sameline = false;
@@ -791,11 +793,11 @@ function fillLine(arr, p1, p2) {
           break;
         case 1:
           if (!samecomp) {
-            numberover += 1;
+            numberOver += 1;
             samecomp = true;
             sameline = false;
           } else if ((arr[k][xeq - 1] === 3 || arr[k][xeq + 1] === 3) && !sameline) {
-            numbercross += 1;
+            numberCross += 1;
             sameline = true;
           } else if ((arr[k][xeq - 1] === 3 || arr[k][xeq + 1] === 3) && sameline) {
             sameline = true;
@@ -805,40 +807,40 @@ function fillLine(arr, p1, p2) {
           break;
         case 2:
           if (!sameline) {
-            numbercross += 1;
+            numberCross += 1;
             sameline = true;
           }
           samecomp = false;
           break;
         case 3:
           if (!sameline) {
-            numbercross += 1;
+            numberCross += 1;
             sameline = true;
           }
           break;
         case 4:
           if (!sameline) {
-            numbercross += 1;
+            numberCross += 1;
             sameline = true;
           }
           samecomp = false;
           break;
         default:
-          alert('Default case for fillLine method !');
+          return 0;
       }
-      arr[k][xeq] += 2;
+      arr[k][xeq] += 2; // eslint-disable-line no-param-reassign
     }
   }
   // Other cases
   else {
     // Looking for the lowest x coordinate
     let dy;
-    if (p1.x < p2.x) {
-      dy = p1.y - p2.y;
-      [xb, yb] = [p1.x, p1.y];
+    if (point1.x < point2.x) {
+      dy = point1.y - point2.y;
+      [xb, yb] = [point1.x, point1.y];
     } else {
-      dy = p2.y - p1.y;
-      [xb, yb] = [p2.x, p2.y];
+      dy = point2.y - point1.y;
+      [xb, yb] = [point2.x, point2.y];
     }
     // Calculating the slope in order to follow the line from the lowest x coordinate
     const slope = -dy / dx;
@@ -854,7 +856,7 @@ function fillLine(arr, p1, p2) {
         case 0:
           if (((arr[v - 1][k] % 2 === 0 && arr[v - 1][k] !== 0) ||
           (arr[v + 1][k] % 2 === 0 && arr[v + 1][k] !== 0)) && !sameline) {
-            numbercross += 1;
+            numberCross += 1;
             sameline = true;
           } else if ((arr[v - 1][k] === 0) && (arr[v + 1][k] === 0)) {
             sameline = false;
@@ -864,11 +866,11 @@ function fillLine(arr, p1, p2) {
         // If the line is overlapping a component
         case 1:
           if (!samecomp) {
-            numberover += 1;
+            numberOver += 1;
             samecomp = true;
             sameline = false;
           } else if ((arr[v - 1][k] === 3 || arr[v + 1][k] === 3) && !sameline) {
-            numbercross += 1;
+            numberCross += 1;
             sameline = true;
           } else if ((arr[v - 1][k] === 3 || arr[v + 1][k] === 3) && sameline) {
             sameline = true;
@@ -879,7 +881,7 @@ function fillLine(arr, p1, p2) {
         // If the line is explicitely crossing another line
         case 2:
           if (!sameline) {
-            numbercross += 1;
+            numberCross += 1;
             sameline = true;
           }
           samecomp = false;
@@ -887,41 +889,34 @@ function fillLine(arr, p1, p2) {
         // If the line is crossing another, overlapping a component
         case 3:
           if (!sameline) {
-            numbercross += 1;
+            numberCross += 1;
             sameline = true;
           }
           break;
         // If a line is crossing 2 others at the sami time (rare)
         case 4:
           if (!sameline) {
-            numbercross += 1;
+            numberCross += 1;
             sameline = true;
           }
           samecomp = false;
           break;
         // Normally all other cases are almost impossible...
         default:
-          alert('Default case for fillLine method !');
+          return 0;
       }
       // Adding to the map the new line traced
-      arr[v][k] += 2;
-      arr[v - 1][k] += 2;
-      arr[v + 1][k] += 2;
+      arr[v][k] += 2; // eslint-disable-line no-param-reassign
+      arr[v - 1][k] += 2; // eslint-disable-line no-param-reassign
+      arr[v + 1][k] += 2; // eslint-disable-line no-param-reassign
     }
   }
   sameline = false;
   samecomp = false;
-  return [numbercross, numberover];
+  return [numberCross, numberOver];
 }
 
-// const map = initiateMap(150, 150);
-// alert(fillLine(map, [2, 2], [100, 100])[0] + fillLine(map, [30, 100], [80, 2])[0] +
-// fillLine(map, [2, 22], [100, 22])[0] + fillLine(map, [45, 2], [45, 100])[0] +
-// fillLine(map, [45, 2], [75, 100])[0] + fillLine(map, [2, 50], [100, 25])[0]);
-// svgBody += '<line x1="2" y1="2" x2="100" y2="100" style="stroke:black;"/><line x1="30" y1="100" x2="80" y2="2" style="stroke:black;" /><line x1="2" y1="22" x2="100" y2="22" style="stroke:black;" /><line x1="45" y1="2" x2="45" y2="100" style="stroke:black;" /><line x1="45" y1="2" x2="75" y2="100" style="stroke:black;" /><line x1="2" y1="50" x2="100" y2="25" style="stroke:black;" />';
-
 // Function that places the hierarchies found on the client side
-
 function maxLevel(hier) {
   const arrnum = [];
   for (let k = 0; k < hier.length; k += 1) {
@@ -945,4 +940,4 @@ function maxLevel(hier) {
 //   }
 // }
 
-document.querySelector('#graph').innerHTML = svgStart + svgBody + svgEnd;
+// addToHtmlPage('#graph', svgStart + svgBody + svgEnd);

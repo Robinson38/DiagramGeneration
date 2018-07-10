@@ -1,0 +1,88 @@
+* addToHtmlPage
+	- takes a html tag and a text
+	- put the text (in our code svg code) and put it in the html tag
+
+* htmlFileList
+	- return a list of all the names of files included in the property "files" of the object given
+	- serve as an index as we work with an object representing a 'side' and not a file list
+
+* hyperLinkedHtml
+	- return a list with all files targeted with an hyperlink
+	- if files names are targetted by multiple hyperlinks, they will appeared as many times as the number of links
+	- rough function in order to make easier the finding of top of hierarchies
+
+* findTopHierarchy
+ 	- return a list of files names which are above a hierarchy
+
+ * findHierarchies
+ 	- return a list of hierarchies found in object.files
+ 	- hierarchy is like [['top', 0], ['other', 1]]
+ 	- 0 is the level on the top
+ 	- the hirarchy is presented in the right order of levels
+
+ * frequencyUsedFiles
+ 	- return a list of js file names and another list of frequencies associated to the names
+ 	- frequency is the average use of js files by html files
+ 
+ * commonThreshold
+ 	- return a threshold to know which files are 'sufficiently used' to be in the 'Common Part'
+ 	- threshold calculation based on the maximum gap between frequencies
+ 	- threshold can't be under 0.66 and above 1
+
+ * findCommonClientFiles
+ 	- based on the threshold defined before, return a list of files which must be in the 'Common Part' (frequency of use above the threshold)
+
+ * findToolBox
+ 	- return a list of js file names which have not links towards other js files
+ 	- these files are only used by the other files like 'tools'
+
+ * findDisorderedFiles
+ 	- returns a list of groups of html files which doesn't appear in the hierarchies
+ 	- groups are made according to the existence of hyperlinks between files
+ 	- aim at order the files not involved in a hierarchy
+
+ * renameExternalComponents
+	 - allow the user to decide for each external file name what shortcut name he wants
+	 - ask the user each time for the shortcut name wanted and then update it in the base data
+
+* relPos :
+	- returns the relative position between two points, represented by an integer following the schema :
+					    |
+				        1
+				    8   |   2
+				--7-----O-----3--
+				    6   |   4
+				        5
+						|
+	- the first point is considered as the reference (placed at 0 on the schema before)
+	- takes as parameters two points declared as objects with a x-coordinate and an y one
+
+* addArr :
+	- takes two arrays and return a new one containing the addition of arrays values position by position
+	- if arrays don't have the same size a 0 is returned (error)
+
+* arrowBetween :
+	- takes into account 2 elements (with their names) and where they are placed (top left hand corner, point objects)
+	- returns 2 point objects : the first is the point to link one the first ellement and the second is the one for the second element
+
+* initiateMap :
+	- takes the width and height wanted for the bitmap and return the bitmap filled with zeros
+	- bitmap has been seen like that :
+	[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+	 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+	 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+	 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+	 - as a result, when calling a point on the bitmap, we must invert x and y coordinates : bitmap[y][x]
+
+* fillComponent :
+	- takes a bitmap and a component (name & point object)
+	- fill the bitmap given with 1 where the component relies
+	- when filling the bitmap, firstly put the component in it then put the line (with fillLine)
+
+* fillLine :
+	- takes a bitmap and 2 point objects
+	- fill the line between the 2 points on the bitmap given (with the number 2)
+	- returns the counting of how many lines did the new one crossed and how many components did the new line overlapped
+    - for each pixel of a line filled, also fills the top and bottom closest pixel, in order to detect all the intersections possible (for a vertical line, it's the right and left closest bits which are pixel)
+
+* 
