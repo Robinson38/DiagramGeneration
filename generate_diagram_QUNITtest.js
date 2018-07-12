@@ -1,5 +1,52 @@
 /* global QUnit, HTMLCLIENT, JSSERVER, relPos, htmlFileList, findTopHierarchy, findHierarchies, frequencyUsedFiles, commonThreshold, findCommonClientFiles, findToolbox, findDisorderedFiles,
-initiateMap, fillComponent, fillLine, addArr */
+initiateMap, fillComponent, fillLine, maxLevel, placeHierarchy, randomList, bestHierarchy */
+
+// Test object for functions
+const TESTCLIENT = {
+  extension: '.html',
+  files: [
+    {
+      name: 'f1',
+      jsClientLinks: ['index'],
+      jsserverlinks: [],
+      cssLinks: ['sums'],
+      hyperlinks: ['f3', 'f2'],
+      externalLinks: ['apis.google.com/js/platform.js'],
+    },
+    {
+      name: 'f2',
+      jsClientLinks: ['home', 'common'],
+      jsserverlinks: ['statuses', 'api'],
+      cssLinks: ['sums'],
+      hyperlinks: ['f4', 'f5'],
+      externalLinks: ['apis.google.com/js/platform.js'],
+    },
+    {
+      name: 'f3',
+      jsClientLinks: ['project-overview', 'common'],
+      jsserverlinks: ['statuses', 'api'],
+      cssLinks: ['sums'],
+      hyperlinks: ['f4', 'f5'],
+      externalLinks: ['apis.google.com/js/platform.js'],
+    },
+    {
+      name: 'f4',
+      jsClientLinks: ['project-marking', 'common'],
+      jsserverlinks: ['marking-calculations', 'api'],
+      cssLinks: ['sums'],
+      hyperlinks: [],
+      externalLinks: ['apis.google.com/js/platform.js'],
+    },
+    {
+      name: 'f5',
+      jsClientLinks: ['project-compare', 'common'],
+      jsserverlinks: ['marking-calculations', 'api'],
+      cssLinks: ['sums'],
+      hyperlinks: [],
+      externalLinks: ['apis.google.com/js/platform.js'],
+    },
+  ],
+};
 
 QUnit.test('Test 1 : htmlFileList', (assert) => {
   assert.strictEqual(htmlFileList(HTMLCLIENT).length, HTMLCLIENT.files.length, 'Good size for the array returned.');
@@ -115,24 +162,13 @@ QUnit.test('Test 9 : relPos', (assert) => {
   assert.strictEqual(i, 0, 'Position 0 found.');
 });
 
-QUnit.test('Test 10 : addArr', (assert) => {
-  const a = addArr([1, 2, 3], [1, 2, 3]);
-  const b = addArr([1, 2, 3], [-1, -2, -3]);
-  const c = addArr([], []);
-  const d = addArr([1, 2, 3], [1, 2, 3, 4]);
-  assert.deepEqual(a, [2, 4, 6], 'Function working with positive elements.');
-  assert.deepEqual(b, [0, 0, 0], 'Function working with negative elements.');
-  assert.deepEqual(c, [], 'Function working with empty arrays.');
-  assert.strictEqual(d, 0, 'Error detected if arrays don\'t have the same size.');
-});
-
-QUnit.test('Test 11 : initiateMap', (assert) => {
+QUnit.test('Test 10 : initiateMap', (assert) => {
   const a = initiateMap(20, 20);
   assert.strictEqual(a.length, 20, 'Good height.');
   assert.strictEqual(a[0].length, 20, 'Good width.');
 });
 
-QUnit.test('Test 12 : fillComponent', (assert) => {
+QUnit.test('Test 11 : fillComponent', (assert) => {
   const m = initiateMap(2000, 2000);
   fillComponent(m, 'db', { x: 20, y: 20 });
   fillComponent(m, 'htmljs1', { x: 100, y: 500 });
@@ -141,11 +177,47 @@ QUnit.test('Test 12 : fillComponent', (assert) => {
   assert.strictEqual(m[100][700], 0, 'Nothing found outside both components.');
 });
 
-QUnit.test('Test 13 : fillLine', (assert) => {
-  const m = initiateMap(2000, 2000);
-  fillLine(m, { x: 0, y: 0 }, { x: 2000, y: 2000 });
-  fillLine(m, { x: 2000, y: 0 }, { x: 0, y: 2000 });
-  assert.strictEqual(m[89][88], 2, 'First line traced.');
-  assert.strictEqual(m[300][1700], 2, 'Second line traced.');
-  assert.strictEqual(m[1000][1000], 4, 'Crossing lines detected');
+QUnit.test('Test 12 : fillLine', (assert) => {
+  const m = initiateMap(100, 100);
+  fillLine(m, { x: 2, y: 2 }, { x: 98, y: 98 });
+  fillLine(m, { x: 98, y: 2 }, { x: 2, y: 98 });
+  assert.strictEqual(m[20][21], 2, 'First line traced.');
+  assert.strictEqual(m[80][20], 2, 'Second line traced.');
+  assert.strictEqual(m[50][50], 4, 'Crossing lines detected.');
+});
+
+QUnit.test('Test 13 : maxLevel', (assert) => {
+  const hier = [['f1', 0], ['f2', 1], ['f3', 1], ['f4', 2], ['f5', 2], ['f6', 2], ['f7', 3], ['f8', 3]];
+  const m = maxLevel(hier)[0];
+  assert.strictEqual(m, 3, 'Good maximum found.');
+});
+
+QUnit.test('Test 14 : randomList', (assert) => {
+  const li = randomList(8);
+  let b = false;
+  for (let i = 0; i < 8; i += 1) {
+    for (const k of li) {
+      if (li.indexOf(k) === -1) {
+        b = true;
+      }
+    }
+  }
+  assert.strictEqual(li.length, 8, 'Correct size of the array returned.');
+  assert.strictEqual(b, false, 'All indexes placed randomly.');
+});
+
+
+// Testing on this function will be efficient using the commented line inside the code, which gives the position of each element
+// Need to see step by step if elements are placed as we want
+QUnit.test('Test 15 : placeHierarchy', (assert) => {
+  const hier = [['f1', 0], ['f2', 1], ['f3', 1], ['f4', 2], ['f5', 2], ['f6', 2], ['f7', 3], ['f8', 3]];
+  const map = initiateMap(2000, 2000);
+  const arr = placeHierarchy(map, hier, 200, 200, { x: 0, y: 0 });
+  assert.strictEqual(arr[0][0], 'f1', 'First level of hierarchy placed at the top.');
+});
+
+QUnit.test('Test 16 : bestHierarchy', (assert) => {
+  const hier = findHierarchies(TESTCLIENT)[0][0];
+  const score = bestHierarchy(TESTCLIENT, hier, 250, 250, { x: 0, y: 0 }, 1)[2];
+  assert.ok(score !== 0, 'Hierarchy has not a 0-score.');
 });

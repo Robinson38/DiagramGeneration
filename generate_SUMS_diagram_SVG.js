@@ -71,6 +71,10 @@ const svgStart = `
   <text x="6" y="30" style="font-size:25px;">HTML</text>
 </g>
 
+<marker id="fleche" markerWidth="24" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto" refX="0" refY="5">
+<path d="M0,0 l12,5 l-12,5 z" style="fill:black;" />
+</marker>
+
 <rect x="0" y="0" width="250" height="250" style="fill:white" />`;
 
 const svgEnd = '</svg>';
@@ -284,7 +288,7 @@ Drawing of both "Client side" and "Server side" (will be done at the end
 of the construction, when all components will be put at their own place
 */
 
-let svgBody = '<rect x="1" y="1" width="1998" height="998" style="fill:white; stroke:black; stroke-width:2px;" /><path d="M1000,0 v0,1000" style="stroke:black; stroke-width:4px; stroke-dasharray:5,5;" />';
+// let svgBody = '<rect x="1" y="1" width="1998" height="998" style="fill:white; stroke:black; stroke-width:2px;" /><path d="M1000,0 v0,1000" style="stroke:black; stroke-width:4px; stroke-dasharray:5,5;" />';
 // svgBody += '<text x="20" y="40" style="font-size:30px">Client side</text><text x="1850" y="40" style="font-size:30px">Server side</text>';
 
 // Add to the html page tag given the text given
@@ -589,7 +593,7 @@ const phw = [
     name: 'htmljs1',
     height: 132,
     width: 220,
-    linkPoints: [[105, 0], [210, 65], [105, 130], [0, 65]],
+    linkPoints: [[110, 0], [220, 66], [110, 132], [0, 66]],
   },
   {
     name: 'htmljs2',
@@ -641,19 +645,6 @@ function relPos(point1, point2) {
   return pos;
 }
 
-// Function adding elements of 2 arrays situated at the same index
-function addArr(arr1, arr2) {
-  const sub = [];
-  if (arr1.length !== arr2.length) {
-    // Arrays don't have the same size
-    return 0;
-  }
-  for (let k = 0; k < arr1.length; k += 1) {
-    sub.push(arr1[k] + arr2[k]);
-  }
-  return sub;
-}
-
 // Function which according to the relative position of 2 elements,
 // returns the best arrow between them
 function arrowBetween(el1, point1, el2, point2) {
@@ -663,66 +654,76 @@ function arrowBetween(el1, point1, el2, point2) {
     const { name } = phw[k];
     if (name === el1) {
       n1 = k;
-    } else if (name === el2) {
+    }
+    if (name === el2) {
       n2 = k;
     }
   }
-  const pos = relPos(point1.x, point1.y, point2.x, point2.y);
-  let point3;
-  let point4;
+  const pos = relPos(point1, point2);
+  const dx = Math.abs(point1.x - point2.x);
+  let dy;
+  if (point1.x < point2.x) {
+    dy = point1.y - point2.y;
+  } else {
+    dy = point2.y - point1.y;
+  }
+  // Calculating the slope in order to follow the line from the lowest x coordinate
+  const slope = dy / dx;
+  const point3 = {};
+  const point4 = {};
   switch (pos) {
     case 1:
-      point3.x = phw[n1].linkpoints[0] + point1.x;
-      point3.y = phw[n1].linkpoints[0] + point1.y;
-      point4.x = phw[n2].linkpoints[2] + point2.x;
-      point4.y = phw[n2].linkpoints[2] + point2.y;
+      point3.x = phw[n1].linkPoints[0][0] + point1.x;
+      point3.y = phw[n1].linkPoints[0][1] + point1.y;
+      point4.x = phw[n2].linkPoints[2][0] + point2.x;
+      point4.y = (phw[n2].linkPoints[2][1] + point2.y) + 9;
       break;
     case 2:
-      point3.x = phw[n1].linkpoints[0] + point1.x;
-      point3.y = phw[n1].linkpoints[0] + point1.y;
-      point4.x = phw[n2].linkpoints[3] + point2.x;
-      point4.y = phw[n2].linkpoints[3] + point2.y;
+      point3.x = phw[n1].linkPoints[0][0] + point1.x;
+      point3.y = phw[n1].linkPoints[0][1] + point1.y;
+      point4.x = (phw[n2].linkPoints[3][0] + point2.x) - 4;
+      point4.y = (phw[n2].linkPoints[3][1] + point2.y) + (4 * slope);
       break;
     case 3:
-      point3.x = phw[n1].linkpoints[1] + point1.x;
-      point3.y = phw[n1].linkpoints[1] + point1.y;
-      point4.x = phw[n2].linkpoints[3] + point2.x;
-      point4.y = phw[n2].linkpoints[3] + point2.y;
+      point3.x = phw[n1].linkPoints[1][0] + point1.x;
+      point3.y = phw[n1].linkPoints[1][1] + point1.y;
+      point4.x = (phw[n2].linkPoints[3][0] + point2.x) - 9;
+      point4.y = phw[n2].linkPoints[3][1] + point2.y;
       break;
     case 4:
-      point3.x = phw[n1].linkpoints[2] + point1.x;
-      point3.y = phw[n1].linkpoints[2] + point1.y;
-      point4.x = phw[n2].linkpoints[3] + point2.x;
-      point4.y = phw[n2].linkpoints[3] + point2.y;
+      point3.x = phw[n1].linkPoints[2][0] + point1.x;
+      point3.y = phw[n1].linkPoints[2][1] + point1.y;
+      point4.x = (phw[n2].linkPoints[3][0] + point2.x) - 4;
+      point4.y = (phw[n2].linkPoints[3][1] + point2.y) + (4 * slope);
       break;
     case 5:
-      point3.x = phw[n1].linkpoints[2] + point1.x;
-      point3.y = phw[n1].linkpoints[2] + point1.y;
-      point4.x = phw[n2].linkpoints[0] + point2.x;
-      point4.y = phw[n2].linkpoints[0] + point2.y;
+      point3.x = phw[n1].linkPoints[2][0] + point1.x;
+      point3.y = phw[n1].linkPoints[2][1] + point1.y;
+      point4.x = phw[n2].linkPoints[0][0] + point2.x;
+      point4.y = (phw[n2].linkPoints[0][1] + point2.y) - 9;
       break;
     case 6:
-      point3.x = phw[n1].linkpoints[2] + point1.x;
-      point3.y = phw[n1].linkpoints[2] + point1.y;
-      point4.x = phw[n2].linkpoints[1] + point2.x;
-      point4.y = phw[n2].linkpoints[1] + point2.y;
+      point3.x = phw[n1].linkPoints[2][0] + point1.x;
+      point3.y = phw[n1].linkPoints[2][1] + point1.y;
+      point4.x = (phw[n2].linkPoints[1][0] + point2.x) + 4;
+      point4.y = (phw[n2].linkPoints[1][1] + point2.y) - (4 * slope);
       break;
     case 7:
-      point3.x = phw[n1].linkpoints[3] + point1.x;
-      point3.y = phw[n1].linkpoints[3] + point1.y;
-      point4.x = phw[n2].linkpoints[1] + point2.x;
-      point4.y = phw[n2].linkpoints[1] + point2.y;
+      point3.x = phw[n1].linkPoints[3][0] + point1.x;
+      point3.y = phw[n1].linkPoints[3][1] + point1.y;
+      point4.x = (phw[n2].linkPoints[1][0] + point2.x) + 9;
+      point4.y = phw[n2].linkPoints[1][1] + point2.y;
       break;
     case 8:
-      point3.x = phw[n1].linkpoints[0] + point1.x;
-      point3.y = phw[n1].linkpoints[0] + point1.y;
-      point4.x = phw[n2].linkpoints[1] + point2.x;
-      point4.y = phw[n2].linkpoints[1] + point2.y;
+      point3.x = phw[n1].linkPoints[0][0] + point1.x;
+      point3.y = phw[n1].linkPoints[0][1] + point1.y;
+      point4.x = (phw[n2].linkPoints[1][0] + point2.x) + 4;
+      point4.y = (phw[n2].linkPoints[1][1] + point2.y) - (4 * slope);
       break;
     default:
       return 'Bug somewhere !';
   }
-  return (point3, point4);
+  return [point3, point4];
 }
 
 /* Tracing test
@@ -774,11 +775,11 @@ function fillLine(arr, point1, point2) {
   let samecomp = false;
   let sameline = false;
   // Case of a vertical line
-  if (point1.x === point2.x) {
+  if (dx === 0) {
     const xeq = point1.x;
     const dy = Math.abs(point1.y - point2.y);
-    yb = point1.y < point2.x ? point1.y : point2.y;
-    for (let k = yb + 5; k < dy - 4; k += 1) {
+    yb = point1.y < point2.y ? point1.y : point2.y;
+    for (let k = yb + 5; k < yb + (dy - 2); k += 1) {
       const test = arr[k][xeq];
       switch (test) {
         case 0:
@@ -826,9 +827,10 @@ function fillLine(arr, point1, point2) {
           samecomp = false;
           break;
         default:
-          return 0;
       }
       arr[k][xeq] += 2; // eslint-disable-line no-param-reassign
+      arr[k][xeq - 1] += 2; // eslint-disable-line no-param-reassign
+      arr[k][xeq + 1] += 2;// eslint-disable-line no-param-reassign
     }
   }
   // Other cases
@@ -844,9 +846,9 @@ function fillLine(arr, point1, point2) {
     }
     // Calculating the slope in order to follow the line from the lowest x coordinate
     const slope = -dy / dx;
-    let fp = Math.round(yb + (4 * slope));
+    let fp = Math.round(yb + (3 * slope));
     // Following the line
-    for (let k = xb + 5; k < (xb + dx) - 9; k += 1) {
+    for (let k = xb + 4; k < (xb + dx) - 2; k += 1) {
       fp += slope;
       const v = Math.round(fp);
       const testb = arr[v][k];
@@ -916,7 +918,7 @@ function fillLine(arr, point1, point2) {
   return [numberCross, numberOver];
 }
 
-// Function that places the hierarchies found on the client side
+// Placing the hierarchies found on the client side
 function maxLevel(hier) {
   const arrnum = [];
   for (let k = 0; k < hier.length; k += 1) {
@@ -925,19 +927,169 @@ function maxLevel(hier) {
   for (let k = 0; k < hier.length; k += 1) {
     arrnum[hier[k][1]] += 1;
   }
-  return Math.max(...arrnum);
+  return [Math.max(...arrnum), arrnum];
 }
 
-// for (let i = 0; i < allhierarchies.length; i += 1) {
-//   let hier = allhierarchies[i];
-//   let maxl = maxLevel(allhierarchies[i]);
-//   // Let a blank position on the left 3->3 5->4 7->5 9->6 11->7
-//   let begpoint;
-//   maxl % 2 == 0 ?
-//   maxl % 2 == 0 ? begpoint = 2 + maxl / 2 : begpoint = maxl;
-//   for (let k = 0; k < hier.length; k += 1) {
-//
-//   }
-// }
+// Returning random positions in an array
+function randomList(num) {
+  const rd = [];
+  const rdList = [];
+  for (let k = 0; k < num; k += 1) {
+    rd.push(Math.random());
+  }
+  for (let k = 0; k < num; k += 1) {
+    const max = rd.indexOf(Math.max(...rd));
+    rd[max] = -1;
+    rdList.push(max);
+  }
+  return rdList;
+}
+
+// Placing a hierarchy found on the client side, with random position for elements situated on the same level
+// stepX & stepY are the scale of the grid in which you place on meeting points the top left hand corner of elements
+function placeHierarchy(map, hierarchy, stepX, stepY, initBeg) {
+  const [maxiL, arrnum] = maxLevel(hierarchy);
+  // x-coordinate of the top element, placed n order to have a symetry at the end
+  const begX = Math.round((maxiL / 2) - 0.5) + 1;
+  let k = 1;
+  let count = 1;
+  const place = [];
+  // Initializaton : top of hierarchy component placed
+  fillComponent(map, 'htmljs1', { x: (initBeg.w + begX) * stepX, y: (initBeg.h + 1) * stepY });
+  let point = {};
+  point.x = (initBeg.w + begX) * stepX;
+  point.y = (initBeg.h + 1) * stepY;
+  place.push(point);
+  // List of lists ordered names of file in the hierarchy at each level (one list per level)
+  const orderedNames = [hierarchy[0][0]];
+  while (k < hierarchy.length) {
+    // Number of files in the level
+    const n = arrnum[count];
+    // Randomization of positions in the level
+    const order = randomList(n);
+    const dep = begX - (Math.round((n / 2) + 0.5) - 1);
+    // Calcultaion of the y-coordinate of the level
+    const gridHeight = (initBeg.y + 1 + count) * stepY;
+    let sym = 0;
+    for (let j = 0; j < n; j += 1) {
+      // Name of the file we are placng on the map
+      const nameFile = hierarchy[k + order[j]][0];
+      orderedNames.push(nameFile);
+      // Calculation of the x-coordinate in order to have symetry
+      const gridWidth = (dep + j + initBeg.x + sym) * stepX;
+      // alert('Level :' + count + '  Name :' + nameFile + '  Point :' + gridWidth + ' / ' + gridHeight);
+      point = {};
+      point.x = gridWidth;
+      point.y = gridHeight;
+      place.push(point);
+      fillComponent(map, 'htmljs1', { x: gridWidth, y: gridHeight });
+      if ((n % 2 === 0) && (dep + j === begX - 1)) {
+        sym = 1;
+      }
+    }
+    k += n;
+    count += 1;
+  }
+  return [orderedNames, place];
+}
+
+// const map = initiateMap(1000, 2000);
+// alert(placeHierarchy(map, [['index', 0], ['home', 1], ['index', 1], ['project-compare', 2], ['project-marking', 2], ['project-overview', 2]], 200, 200, { w: 0, h: 0 })[1]);
+
+// For a hierarchy given, randomly generates a layering and counts the number of lines crossed and components overlapped
+// Returns the score and the order of components in the hierarchy for this score
+function calculateScoreHierarchy(obj, map, hierarchy, stepX, stepY, initBeg) {
+  // Counter of lines crossed and components overlapping
+  const count = {};
+  count.linesCrossed = 0;
+  count.componentsOverlapped = 0;
+  const index = htmlFileList(obj);
+  const [orderedNames, place] = placeHierarchy(map, hierarchy, stepX, stepY, initBeg);
+  for (let k = 0; k < orderedNames.length; k += 1) {
+    // We are identifying the component...
+    const num = index.indexOf(orderedNames[k]);
+    const position = place[k];
+    // ... and tracing the links leaving from it ...
+    for (let j = 0; j < obj.files[num].hyperlinks.length; j += 1) {
+      const towards = place[orderedNames.indexOf(obj.files[num].hyperlinks[j])];
+      const [beg, end] = arrowBetween('htmljs1', position, 'htmljs1', towards);
+      const [a, b] = fillLine(map, beg, end);
+      // ... obviously counting the problems encountered.
+      count.linesCrossed += a;
+      count.componentsOverlapped += b;
+    }
+  }
+  // Score is defined this way but can be redefined
+  return [orderedNames, place, (count.linesCrossed + (2 * count.componentsOverlapped)) / 3];
+}
+
+// const map = initiateMap(2000, 2000);
+// alert(calculateScoreHierarchy(HTMLCLIENT, map, [['index', 0], ['home', 1], ['project-overview', 2], ['project-compare', 3], ['project-marking', 3]], 300, 300, { w: 0, h: 0 })[2]);
+
+// Rough and heavy function that trace our bitmap in order to check if everything is okay when testing functions
+function traceBitmap(mmm) {
+  let text = '';
+  for (let k = 0; k < mmm.length; k += 1) {
+    for (let j = 0; j < mmm[0].length; j += 1) {
+      switch (mmm[k][j]) {
+        case 1:
+          text += `<rect x="${j}" y="${k}" width="1" height="1" stroke="none" fill="blue"/>`;
+          break;
+        case 2:
+          text += `<rect x="${j}" y="${k}" width="1" height="1" stroke="none" fill="red"/>`;
+          break;
+        case 3:
+          text += `<rect x="${j}" y="${k}" width="1" height="1" stroke="none" fill="yellow"/>`;
+          break;
+        case 4:
+          text += `<rect x="${j}" y="${k}" width="1" height="1" stroke="none" fill="green"/>`;
+          break;
+        default:
+      }
+    }
+  }
+  return text;
+}
+
+// const svgBody = traceBitmap(map);
+
+// Finding the best hierarchy (minimum of score) by iterating a certain number of times
+function bestHierarchy(obj, hierarchy, stepX, stepY, initBeg, it) {
+  let min = 1000;
+  let listNames;
+  let listPlace;
+  for (let k = 0; k < it; k += 1) {
+    const bitMap = initiateMap(5000, 5000);
+    const [names, place, score] = calculateScoreHierarchy(obj, bitMap, hierarchy, stepX, stepY, initBeg);
+    if (score < min) {
+      listNames = names.slice(0);
+      listPlace = place.slice(0);
+      min = score;
+    }
+  }
+  return [listNames, listPlace, min];
+}
+
+// Layering of the best hierarchy in the diagram
+// First tracing the components, then putting all the links
+function layerFinalHierarchy(obj, bitMapGeneral, hierarchy, stepX, stepY, initBeg, it) {
+  const [listNames, listPlace] = bestHierarchy(obj, hierarchy, stepX, stepY, initBeg, it);
+  const index = htmlFileList(obj);
+  let text = '';
+  // Firstly layer the elements
+  for (let k = 0; k < listNames.length; k += 1) {
+    text += `<use x="${listPlace[k].x}" y="${listPlace[k].y}" href="#htmljs1" />`;
+  }
+  // Second layer the lines
+  for (let k = 0; k < listNames.length; k += 1) {
+    const num = index.indexOf(listNames[k]);
+    for (let j = 0; j < obj.files[num].hyperlinks.length; j += 1) {
+      const towards = listPlace[listNames.indexOf(obj.files[num].hyperlinks[j])];
+      const [beg, end] = arrowBetween('htmljs1', listPlace[k], 'htmljs1', towards);
+      text += `<line x1="${beg.x}" y1="${beg.y}" x2="${end.x}" y2="${end.y}" style="stroke:black; stroke-width:3px; fill:black; marker-end:url(#fleche)" />`;
+    }
+  }
+  return text;
+}
 
 // addToHtmlPage('#graph', svgStart + svgBody + svgEnd);

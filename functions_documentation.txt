@@ -1,88 +1,163 @@
-* addToHtmlPage
-	- takes a html tag and a text
-	- put the text (in our code svg code) and put it in the html tag
+# Documentation - generating component diagrams
 
-* htmlFileList
-	- return a list of all the names of files included in the property "files" of the object given
-	- serve as an index as we work with an object representing a 'side' and not a file list
+This documentation refers to the file generate_SUMS_diagram_SVG.js
+The code is based on a list of components and links established before. The goal is from the lists to draw an SVG component diagram of a web application. An extreme importance is given to the beauty and understanding of the layering ; the diagram must be easy and fast to understand.
 
-* hyperLinkedHtml
-	- return a list with all files targeted with an hyperlink
-	- if files names are targetted by multiple hyperlinks, they will appeared as many times as the number of links
-	- rough function in order to make easier the finding of top of hierarchies
+## Basic methods
 
-* findTopHierarchy
- 	- return a list of files names which are above a hierarchy
+### addToHtmlPage
+- takes a html tag and a text
+- put the text (in our code svg code) and put it in the html tag
 
- * findHierarchies
- 	- return a list of hierarchies found in object.files
- 	- hierarchy is like [['top', 0], ['other', 1]]
- 	- 0 is the level on the top
- 	- the hirarchy is presented in the right order of levels
+### htmlFileList
+- return a list of all the names of files included in the property "files" of the object given
+- serve as an index as we work with an object representing a 'side' and not a file list
 
- * frequencyUsedFiles
- 	- return a list of js file names and another list of frequencies associated to the names
- 	- frequency is the average use of js files by html files
- 
- * commonThreshold
- 	- return a threshold to know which files are 'sufficiently used' to be in the 'Common Part'
- 	- threshold calculation based on the maximum gap between frequencies
- 	- threshold can't be under 0.66 and above 1
+## Finding hierarchies of html files on client side
 
- * findCommonClientFiles
- 	- based on the threshold defined before, return a list of files which must be in the 'Common Part' (frequency of use above the threshold)
+*The goal is to find if there is a hierarchy between the html files (linked between them by hyperlinks). Like if I open this page, I could go to these other pages, which are thus below in the hierarchy...*
 
- * findToolBox
- 	- return a list of js file names which have not links towards other js files
- 	- these files are only used by the other files like 'tools'
+### hyperLinkedHtml
+- return a list with all files targeted with an hyperlink
+- if files names are targetted by multiple hyperlinks, they will appeared as many times as the number of links
+- rough function in order to make easier the finding of top of hierarchies
 
- * findDisorderedFiles
- 	- returns a list of groups of html files which doesn't appear in the hierarchies
- 	- groups are made according to the existence of hyperlinks between files
- 	- aim at order the files not involved in a hierarchy
+### findTopHierarchy
+- return a list of files names which are above a hierarchy
 
- * renameExternalComponents
-	 - allow the user to decide for each external file name what shortcut name he wants
-	 - ask the user each time for the shortcut name wanted and then update it in the base data
+### findHierarchies
+- return a list of hierarchies found in object.files
+- hierarchy is like [['top', 0], ['other', 1]]
+- 0 is the level on the top
+- the hirarchy is presented in the right order of levels
 
-* relPos :
-	- returns the relative position between two points, represented by an integer following the schema :
-					    |
+## Knowing which files must be in the client side 'Common Part'
+
+*We define a 'Common Part' int the client side, namely gathering js, css or external files which are used by almost all of the html files on the client side. We calculate a threshold of utilisation to know if the file could be considered as used by a majority of html files.*
+
+### frequencyUsedFiles
+- return a list of js file names and another list of frequencies associated to the names
+- frequency is the average use of js files by html files
+
+### commonThreshold
+- return a threshold to know which files are 'sufficiently used' to be in the 'Common Part'
+- threshold calculation based on the maximum gap between frequencies
+- threshold can't be under 0.66 and above 1
+
+### findCommonClientFiles
+- based on the threshold defined before, return a list of files which must be in the 'Common Part' (frequency of use above the threshold)
+
+## Knowing which files must be in the server side 'ToolBox'
+
+*The 'ToolBox' must gather the js files which do not call other js files, thus which are just used like tools by the other js files on the server side.*
+
+### findToolBox
+- return a list of js file names which have not links towards other js files
+- these files are only used by the other files like 'tools'
+
+## Trying to order html files not in a hierarchy in the client side
+
+*If possible, we gather the files not in a hierarchy but still hyperlinked between them. If not, we just know that a file is alone.*
+
+### findDisorderedFiles
+- returns a list of groups of html files which doesn't appear in the hierarchies
+- groups are made according to the existence of hyperlinks between files
+- aim at order the files not involved in a hierarchy
+
+## Renaming the externalfiles
+
+*As files in the external part are usually hard-named, we ask the user to give them a shortcut. This is not the best solution but for now, it will be sufficient.*
+
+### renameExternalComponents
+- allow the user to decide for each external file name what shortcut name he wants
+- ask the user each time for the shortcut name wanted and then update it in the base data
+
+## Kknowing where to link elements
+
+*Here are the methods that allow us for two components given, to calculate the point on each component where we will link them.*
+
+### relPos :
+- returns the relative position between two points, represented by an integer following the schema :
+```
+                        |
 				        1
 				    8   |   2
 				--7-----O-----3--
 				    6   |   4
 				        5
-						|
-	- the first point is considered as the reference (placed at 0 on the schema before)
-	- takes as parameters two points declared as objects with a x-coordinate and an y one
+                        |
+```
+- the first point is considered as the reference (placed at 0 on the schema before)
+- takes as parameters two points declared as objects with a x-coordinate and an y one
 
-* addArr :
-	- takes two arrays and return a new one containing the addition of arrays values position by position
-	- if arrays don't have the same size a 0 is returned (error)
+### arrowBetween :
+- takes into account 2 elements (with their names) and where they are placed (top left hand corner, point objects)
+- returns 2 point objects : the first is the point to link one the first ellement and the second is the one for the second element
 
-* arrowBetween :
-	- takes into account 2 elements (with their names) and where they are placed (top left hand corner, point objects)
-	- returns 2 point objects : the first is the point to link one the first ellement and the second is the one for the second element
+## Positioning the elements
 
-* initiateMap :
-	- takes the width and height wanted for the bitmap and return the bitmap filled with zeros
-	- bitmap has been seen like that :
+*In order to know where to put the elements, we are using a kind of bitmap. It will be filled by different numbers according to what we have on a pixel : a component, a line, crossing lines, overlapping components...
+What we want at the end is to calculate the number of lines crossing and of components overlapped. Thus we consider that we place first the components and then we trace the links between them, calculating at the same time the numbers we want.*
+
+### initiateMap :
+- takes the width and height wanted for the bitmap and return the bitmap filled with zeros
+- bitmap has been seen like that :
+```
 	[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 	 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 	 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 	 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-	 - as a result, when calling a point on the bitmap, we must invert x and y coordinates : bitmap[y][x]
+```
+- as a result, when calling a point on the bitmap, we must invert x and y coordinates : bitmap[y][x]
 
-* fillComponent :
-	- takes a bitmap and a component (name & point object)
-	- fill the bitmap given with 1 where the component relies
-	- when filling the bitmap, firstly put the component in it then put the line (with fillLine)
+### fillComponent :
+- takes a bitmap and a component (name & point object)
+- fill the bitmap given with 1 where the component relies
+- when filling the bitmap, firstly put the component in it then put the line (with fillLine)
 
-* fillLine :
-	- takes a bitmap and 2 point objects
-	- fill the line between the 2 points on the bitmap given (with the number 2)
-	- returns the counting of how many lines did the new one crossed and how many components did the new line overlapped
-    - for each pixel of a line filled, also fills the top and bottom closest pixel, in order to detect all the intersections possible (for a vertical line, it's the right and left closest bits which are pixel)
+### fillLine :
+- takes a bitmap and 2 point objects
+- fill the line between the 2 points on the bitmap given (with the number 2)
+- returns the counting of how many lines did the new one crossed and how many components did the new line overlapped
+- for each pixel of a line filled, also fills the top and bottom closest pixel, in order to detect all the intersections possible (for a vertical line, it's the right and left closest bits which are pixel)
 
-* 
+## Layering the best hierarchy
+
+*Bunch of functions that aims at finding the best hierarchy layering for a hierarchy given (by iterating with a random position of each component on each level), and then create the SVG instructions to really layering them on our diagram.*
+
+### maxLevel :
+- for given hierarchy, returns the maximum number of files in the same level, and an array with the number of files by level (position in the array returned indicates the level)
+
+### randomList :
+- for given size, returns an array with 'positions' at a random place (which will be used to place randomly elements in a hierarchy's level)
+- if 3 is given, could return [0, 1, 2] or [1, 2, 0] or [2, 0, 1] etc...
+
+### placeHierarchy :
+- takes a bitmap and a html files hierarchy defined before
+- places on the bitmap the hierarchy with components position chosen randomly at each level
+- return a list of files names, gathered by level and ordered in the same way than in the hierarchy built
+- components are placed according to a virtual grid defined in the parameters of the function : the top left hand corner of elements is placed on meeting points
+- aiming at having symetry in order to be more visual
+
+### calculateScoreHierarchy :
+- takes a map, an object representing a side and a hierarchy with its layering information
+- returns the 'score' of the representation : namely a number taking into account the number of crossing lines and overlapping elements
+- the higher the score is, the worst is the representation
+
+### traceBitmap
+
+- 'testing' function that layers the bitmap in order to verify if everything is okay when we are testing the different functions
+
+### bestHierarchy
+
+- iterating the process of randomly choose a hierarchy layering and then calculate the score of the representation
+- the hierarchy chosen is the one minimizing the score
+- returns a list of names as they are ordered in the hierarchy and a list of the places of each component (also ordered like the names)
+
+### layerFinalHierarchy
+
+- function all in one that finds the best hierarchy (bestHierarchy) and layer it on the diagram
+- firstly places the components then places all the lines that link them
+- returns a SVG like text that contain all the instructions for drawing
+
+## NEXT !
