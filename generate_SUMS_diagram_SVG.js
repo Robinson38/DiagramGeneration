@@ -2,14 +2,25 @@
 const svgStart = `
 <svg width="5000" height="5000" xmlns="http://www.w3.org/2000/svg">
 
+<!--
+<style type="text/css" >
+  <![CDATA[
+      polyline.html {
+          stroke: red;
+          fill:   green;
+      }
+  ]]>
+</style>
+-->
+
 <g id="js">
-  <polyline points="1,1 85,1 119,34 119,131 1,131 1,0" style="fill:blue; stroke:black; stroke-width:3;" />
-  <text x="28" y="28" style="font-size:25px;">JS</text>
+  <polyline points="1,1 85,1 119,34 119,131 1,131 1,0" style="fill:#1E90FF; stroke:black; stroke-width:3;" />
+  <text x="5" y="123" style="font-size:20px;">.js</text>
 </g>
 
 <g id="html">
   <polyline points="1,1 85,1 119,34 119,131 1,131 1,0" style="fill:red; stroke:black; stroke-width:3;" />
-  <text x="6" y="30" style="font-size:25px;">HTML</text>
+  <text x="5" y="126" style="font-size:20px;">.html</text>
 </g>
 
 <g id="db">
@@ -32,46 +43,50 @@ const svgStart = `
 </g>
 
 <g id="htmljs1">
-  <polyline points="81,1 185,1 219,34 219,34 219,131 81,131 81,0" style="fill:blue; stroke:black; stroke-width:3;" />
-  <text x="120" y="30" style="font-size:25px;">JS</text>
+  <polyline points="81,1 185,1 219,34 219,34 219,131 81,131 81,0" style="fill:#1E90FF; stroke:black; stroke-width:3;" />
   <polyline points="1,1 80,1 114,39 114,39 114,131 1,131 1,0" style="fill:red; stroke:black; stroke-width:3;" />
-  <text x="6" y="30" style="font-size:25px;">HTML</text>
+  <text x="195" y="123" style="font-size:20px;">.js</text>
+  <text x="5" y="123" style="font-size:20px;">.html</text>
 </g>
 
 <g id="htmljs2">
-  <polyline points="81,1 185,1 219,34 219,34 219,131 81,131 81,0" style="fill:blue; stroke:black; stroke-width:3;" />
-  <polyline points="81,66 185,66 219,100 219,100 219,131 81,131 81,65" style="fill:blue; stroke:black; stroke-width:3;" />
-  <text x="120" y="30" style="font-size:25px;">JS</text>
-  <text x="120" y="95" style="font-size:25px;">JS</text>
+  <polyline points="81,1 185,1 219,34 219,34 219,131 81,131 81,0" style="fill:#1E90FF; stroke:black; stroke-width:3;" />
+  <polyline points="81,66 185,66 219,100 219,100 219,131 81,131 81,65" style="fill:#1E90FF; stroke:black; stroke-width:3;" />
   <polyline points="1,1 80,1 114,39 114,39 114,131 1,131 1,0" style="fill:red; stroke:black; stroke-width:3;" />
-  <text x="6" y="30" style="font-size:25px;">HTML</text>
+  <text x="195" y="123" style="font-size:20px;">.js</text>
+  <text x="5" y="123" style="font-size:20px;">.html</text>
 </g>
 
 <g id="htmljs3">
-  <polyline points="81,1 185,1 219,34 219,131 81,131 81,0" style="fill:blue; stroke:black; stroke-width:3;" />
-  <polyline points="81,45 185,45 219,78 219,131 81,131 81,0" style="fill:blue; stroke:black; stroke-width:3;" />
-  <polyline points="81,89 185,89 219,122 219,131 81,131 81,0" style="fill:blue; stroke:black; stroke-width:3;" />
-  <text x="120" y="30" style="font-size:25px;">JS</text>
-  <text x="120" y="74" style="font-size:25px;">JS</text>
-  <text x="120" y="118" style="font-size:25px;">JS</text>
+  <polyline points="81,1 185,1 219,34 219,131 81,131 81,0" style="fill:#1E90FF; stroke:black; stroke-width:3;" />
+  <polyline points="81,45 185,45 219,78 219,131 81,131 81,0" style="fill:#1E90FF; stroke:black; stroke-width:3;" />
+  <polyline points="81,89 185,89 219,122 219,131 81,131 81,0" style="fill:#1E90FF; stroke:black; stroke-width:3;" />
   <polyline points="0,1 80,1 114,39 114,39 114,131 1,131 1,0" style="fill:red; stroke:black; stroke-width:3;" />
-  <text x="6" y="30" style="font-size:25px;">HTML</text>
+  <text x="195" y="123" style="font-size:20px;">.js</text>
+  <text x="5" y="123" style="font-size:20px;">.html</text>
 </g>
 
 <g id="htmljs4">
-  <polyline points="81,1 185,1 219,34 219,131 81,131 81,0" style="fill:blue; stroke:black; stroke-width:3;" />
-  <polyline points="81,34 185,34 219,67 219,131 81,131 81,0" style="fill:blue; stroke:black; stroke-width:3;" />
-  <polyline points="81,67 185,67 219,100 219,131 81,131 81,0" style="fill:blue; stroke:black; stroke-width:3;" />
-  <polyline points="81,100 185,100 217,131 81,131 81,0" style="fill:blue; stroke:black; stroke-width:3;" />
-  <text x="120" y="25" style="font-size:25px;">JS</text>
-  <text x="120" y="58" style="font-size:25px;">JS</text>
-  <text x="120" y="91" style="font-size:25px;">JS</text>
-  <text x="120" y="124" style="font-size:25px;">JS</text>
+  <polyline points="81,1 185,1 219,34 219,131 81,131 81,0" style="fill:#1E90FF; stroke:black; stroke-width:3;" />
+  <polyline points="81,34 185,34 219,67 219,131 81,131 81,0" style="fill:#1E90FF; stroke:black; stroke-width:3;" />
+  <polyline points="81,67 185,67 219,100 219,131 81,131 81,0" style="fill:#1E90FF; stroke:black; stroke-width:3;" />
+  <polyline points="81,100 185,100 217,131 81,131 81,0" style="fill:#1E90FF; stroke:black; stroke-width:3;" />
   <polyline points="1,1 80,1 114,39 114,39 114,131 1,131 1,0" style="fill:red; stroke:black; stroke-width:3;" />
-  <text x="6" y="30" style="font-size:25px;">HTML</text>
+  <text x="195" y="123" style="font-size:20px;">.js</text>
+  <text x="5" y="123" style="font-size:20px;">.html</text>
 </g>
 
-<marker id="fleche" markerWidth="24" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto" refX="0" refY="5">
+<g id="css">
+  <rect width="130" height="130" style="fill:#FFD700; stroke:black; stroke-width:3;" />
+  <text x="5" y="123" style="font-size:20px;">.css</text>
+</g>
+
+<g id="ext">
+  <rect width="130" height="130" style="fill:#FF8C00; stroke:black; stroke-width:3;" />
+  <text x="5" y="123" style="font-size:20px;">external</text>
+</g>
+
+<marker id="fleche" markerWidth="24" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto" refX="11" refY="5">
 <path d="M0,0 l12,5 l-12,5 z" style="fill:black;" />
 </marker>
 
@@ -161,7 +176,7 @@ const HTMLCLIENT = {
     },
     {
       name: 'admin-project-overview',
-      jsClientLinks: ['admin', 'common'],
+      jsClientLinks: ['admin-project-overview', 'common'],
       jsserverlinks: ['statuses', 'api'],
       cssLinks: ['sums'],
       hyperlinks: ['admin'],
@@ -296,6 +311,17 @@ function addToHtmlPage(tag, text) {
   document.querySelector(tag).innerHTML = text;
 }
 
+// Finding the index in the obj.files of a given name file
+function indexOfHtml(obj, name) {
+  let num;
+  for (let k = 0; k < obj.files.length; k += 1) {
+    if (obj.files[k].name === name) {
+      num = k;
+    }
+  }
+  return num;
+}
+
 /* 1st method :
 Detecting hierarchy between HTML files within the client side
 
@@ -339,12 +365,12 @@ function findTopHierarchy(obj) {
 
 // Find all the hierarchies on client side
 function findHierarchies(obj) {
-  const globalNameList = [];
+  let globalNameList = [];
   const toph = findTopHierarchy(obj);
   const indexHTML = htmlFileList(obj);
   // List of all the hierarchies in our client side
   const allHierarchies = [];
-  const nameList = [];
+  let nameList = [];
   // Doing the loop on all possible hierarchies found before
   for (const topHier of toph) {
     // Rank in the hierarchy
@@ -374,15 +400,21 @@ function findHierarchies(obj) {
             n += 1;
           }
         }
-        n -= 1;
+        if (n > 0) {
+          n -= 1;
+        }
         cur = nameList[currentIndexFile + m];
       }
       nbis = n;
       n = 1;
+      if (nbis === 0) {
+        currentIndexFile = hierarchy.length;
+      }
     }
     allHierarchies.push(hierarchy);
+    nameList = [];
   }
-  return [allHierarchies, nameList];
+  return [allHierarchies, globalNameList];
 }
 
 /* 2nd method :
@@ -506,6 +538,23 @@ function findCommonClientFiles(obj) {
   return [jsCommon, cssCommon, extCommon];
 }
 
+
+/* Returning the number of js links on the client side without counting the js in 'Common Part'
+ Also returning a list of the js files in the 'Common Part'
+ In order to know how many js files should we layer aside each html
+*/
+function howManyJs(obj, name) {
+  const num = indexOfHtml(obj, name);
+  const commonJs = findCommonClientFiles(obj)[0];
+  let n = 0;
+  for (const js of obj.files[num].jsClientLinks) {
+    if (commonJs.indexOf(js) === -1) {
+      n += 1;
+    }
+  }
+  return [n, commonJs];
+}
+
 /* 3rd method
 Detecting 'toolbox' on server side
 */
@@ -599,19 +648,19 @@ const phw = [
     name: 'htmljs2',
     height: 132,
     width: 220,
-    linkPoints: [[105, 0], [210, 65], [105, 130], [0, 65]],
+    linkPoints: [[110, 0], [220, 66], [110, 132], [0, 66]],
   },
   {
     name: 'htmljs3',
     height: 132,
     width: 220,
-    linkPoints: [[105, 0], [210, 65], [105, 130], [0, 65]],
+    linkPoints: [[110, 0], [220, 66], [110, 132], [0, 66]],
   },
   {
     name: 'htmljs4',
     height: 132,
     width: 220,
-    linkPoints: [[105, 0], [210, 65], [105, 130], [0, 65]],
+    linkPoints: [[110, 0], [220, 66], [110, 132], [0, 66]],
   },
 ];
 
@@ -660,65 +709,57 @@ function arrowBetween(el1, point1, el2, point2) {
     }
   }
   const pos = relPos(point1, point2);
-  const dx = Math.abs(point1.x - point2.x);
-  let dy;
-  if (point1.x < point2.x) {
-    dy = point1.y - point2.y;
-  } else {
-    dy = point2.y - point1.y;
-  }
-  // Calculating the slope in order to follow the line from the lowest x coordinate
-  const slope = dy / dx;
   const point3 = {};
   const point4 = {};
+  // According to the relative position of the elements, linking points are not the same
   switch (pos) {
     case 1:
       point3.x = phw[n1].linkPoints[0][0] + point1.x;
       point3.y = phw[n1].linkPoints[0][1] + point1.y;
       point4.x = phw[n2].linkPoints[2][0] + point2.x;
-      point4.y = (phw[n2].linkPoints[2][1] + point2.y) + 9;
+      point4.y = phw[n2].linkPoints[2][1] + point2.y;
       break;
     case 2:
       point3.x = phw[n1].linkPoints[0][0] + point1.x;
       point3.y = phw[n1].linkPoints[0][1] + point1.y;
-      point4.x = (phw[n2].linkPoints[3][0] + point2.x) - 4;
-      point4.y = (phw[n2].linkPoints[3][1] + point2.y) + (4 * slope);
+      point4.x = phw[n2].linkPoints[3][0] + point2.x;
+      point4.y = phw[n2].linkPoints[3][1] + point2.y;
       break;
     case 3:
       point3.x = phw[n1].linkPoints[1][0] + point1.x;
       point3.y = phw[n1].linkPoints[1][1] + point1.y;
-      point4.x = (phw[n2].linkPoints[3][0] + point2.x) - 9;
+      point4.x = phw[n2].linkPoints[3][0] + point2.x;
       point4.y = phw[n2].linkPoints[3][1] + point2.y;
       break;
     case 4:
       point3.x = phw[n1].linkPoints[2][0] + point1.x;
       point3.y = phw[n1].linkPoints[2][1] + point1.y;
-      point4.x = (phw[n2].linkPoints[3][0] + point2.x) - 4;
-      point4.y = (phw[n2].linkPoints[3][1] + point2.y) + (4 * slope);
+      point4.x = phw[n2].linkPoints[3][0] + point2.x;
+      point4.y = phw[n2].linkPoints[3][1] + point2.y;
       break;
     case 5:
       point3.x = phw[n1].linkPoints[2][0] + point1.x;
       point3.y = phw[n1].linkPoints[2][1] + point1.y;
       point4.x = phw[n2].linkPoints[0][0] + point2.x;
-      point4.y = (phw[n2].linkPoints[0][1] + point2.y) - 9;
+      point4.y = phw[n2].linkPoints[0][1] + point2.y;
       break;
     case 6:
       point3.x = phw[n1].linkPoints[2][0] + point1.x;
       point3.y = phw[n1].linkPoints[2][1] + point1.y;
-      point4.x = (phw[n2].linkPoints[1][0] + point2.x) + 4;
-      point4.y = (phw[n2].linkPoints[1][1] + point2.y) - (4 * slope);
+      point4.x = phw[n2].linkPoints[1][0] + point2.x;
+      point4.y = phw[n2].linkPoints[1][1] + point2.y;
       break;
     case 7:
       point3.x = phw[n1].linkPoints[3][0] + point1.x;
       point3.y = phw[n1].linkPoints[3][1] + point1.y;
-      point4.x = (phw[n2].linkPoints[1][0] + point2.x) + 9;
+      point4.x = phw[n2].linkPoints[1][0] + point2.x;
       point4.y = phw[n2].linkPoints[1][1] + point2.y;
       break;
     case 8:
       point3.x = phw[n1].linkPoints[0][0] + point1.x;
       point3.y = phw[n1].linkPoints[0][1] + point1.y;
-      point4.x = (phw[n2].linkPoints[1][0] + point2.x) + 4;
-      point4.y = (phw[n2].linkPoints[1][1] + point2.y) - (4 * slope);
+      point4.x = phw[n2].linkPoints[1][0] + point2.x;
+      point4.y = phw[n2].linkPoints[1][1] + point2.y;
       break;
     default:
       return 'Bug somewhere !';
@@ -746,7 +787,7 @@ function initiateMap(width, height) {
   return map;
 }
 
-// Function registering the component given in the array
+// Function registering the component given in the array (which is a map)
 function fillComponent(arr, name, point) {
   let n = 0;
   for (let k = 0; k < phw.length; k += 1) {
@@ -828,6 +869,7 @@ function fillLine(arr, point1, point2) {
           break;
         default:
       }
+      // In order to not miss crossings, we define thicker on the map the line we are tracing
       arr[k][xeq] += 2; // eslint-disable-line no-param-reassign
       arr[k][xeq - 1] += 2; // eslint-disable-line no-param-reassign
       arr[k][xeq + 1] += 2;// eslint-disable-line no-param-reassign
@@ -855,6 +897,7 @@ function fillLine(arr, point1, point2) {
       // Different cases according to what the line is crossing or not
       switch (testb) {
         // Need to check if we are not avoiding for one case a line (or plenty of) crossed
+        // Each time we deal with the pixel we have calculated, but also the one above and below it too
         case 0:
           if (((arr[v - 1][k] % 2 === 0 && arr[v - 1][k] !== 0) ||
           (arr[v + 1][k] % 2 === 0 && arr[v + 1][k] !== 0)) && !sameline) {
@@ -905,9 +948,11 @@ function fillLine(arr, point1, point2) {
           break;
         // Normally all other cases are almost impossible...
         default:
-          return 0;
+          numberCross += 1;
+          numberOver += 1;
       }
       // Adding to the map the new line traced
+      // In order to not miss crossings, we define thicker on the map the line we are tracing
       arr[v][k] += 2; // eslint-disable-line no-param-reassign
       arr[v - 1][k] += 2; // eslint-disable-line no-param-reassign
       arr[v + 1][k] += 2; // eslint-disable-line no-param-reassign
@@ -945,20 +990,40 @@ function randomList(num) {
   return rdList;
 }
 
+// Returning the type of component for knowing where to link the components
+function typeHtmlJs(obj, name) {
+  let ref = 'html';
+  const [howMany, cmnJs] = howManyJs(obj, name);
+  if (howMany !== 0) {
+    ref = `htmljs${howMany}`;
+  }
+  return [ref, cmnJs];
+}
+
+// Returning the SVG tag of component for the layering
+function tagHtmlJs(obj, name) {
+  let ref = '#htmljs';
+  const [howMany, cmnJs] = howManyJs(obj, name);
+  if (howMany !== 0) {
+    ref += howMany;
+  }
+  return [ref, cmnJs, howMany];
+}
+
 // Placing a hierarchy found on the client side, with random position for elements situated on the same level
 // stepX & stepY are the scale of the grid in which you place on meeting points the top left hand corner of elements
-function placeHierarchy(map, hierarchy, stepX, stepY, initBeg) {
+function placeHierarchy(map, hierarchy, typeEl, stepX, stepY, initBeg) {
   const [maxiL, arrnum] = maxLevel(hierarchy);
-  // x-coordinate of the top element, placed n order to have a symetry at the end
+  // x-coordinate of the top element, placed in order to have a symetry at the end
   const begX = Math.round((maxiL / 2) - 0.5) + 1;
   let k = 1;
   let count = 1;
   const place = [];
   // Initializaton : top of hierarchy component placed
-  fillComponent(map, 'htmljs1', { x: (initBeg.w + begX) * stepX, y: (initBeg.h + 1) * stepY });
+  fillComponent(map, typeEl, { x: initBeg.x + (begX * stepX), y: initBeg.y + stepY });
   let point = {};
-  point.x = (initBeg.w + begX) * stepX;
-  point.y = (initBeg.h + 1) * stepY;
+  point.x = initBeg.x + (begX * stepX);
+  point.y = initBeg.y + stepY;
   place.push(point);
   // List of lists ordered names of file in the hierarchy at each level (one list per level)
   const orderedNames = [hierarchy[0][0]];
@@ -969,7 +1034,7 @@ function placeHierarchy(map, hierarchy, stepX, stepY, initBeg) {
     const order = randomList(n);
     const dep = begX - (Math.round((n / 2) + 0.5) - 1);
     // Calcultaion of the y-coordinate of the level
-    const gridHeight = (initBeg.y + 1 + count) * stepY;
+    const gridHeight = initBeg.y + ((1 + count) * stepY);
     let sym = 0;
     for (let j = 0; j < n; j += 1) {
       // Name of the file we are placng on the map
@@ -982,7 +1047,7 @@ function placeHierarchy(map, hierarchy, stepX, stepY, initBeg) {
       point.x = gridWidth;
       point.y = gridHeight;
       place.push(point);
-      fillComponent(map, 'htmljs1', { x: gridWidth, y: gridHeight });
+      fillComponent(map, typeEl, { x: gridWidth, y: gridHeight });
       if ((n % 2 === 0) && (dep + j === begX - 1)) {
         sym = 1;
       }
@@ -993,9 +1058,6 @@ function placeHierarchy(map, hierarchy, stepX, stepY, initBeg) {
   return [orderedNames, place];
 }
 
-// const map = initiateMap(1000, 2000);
-// alert(placeHierarchy(map, [['index', 0], ['home', 1], ['index', 1], ['project-compare', 2], ['project-marking', 2], ['project-overview', 2]], 200, 200, { w: 0, h: 0 })[1]);
-
 // For a hierarchy given, randomly generates a layering and counts the number of lines crossed and components overlapped
 // Returns the score and the order of components in the hierarchy for this score
 function calculateScoreHierarchy(obj, map, hierarchy, stepX, stepY, initBeg) {
@@ -1004,15 +1066,17 @@ function calculateScoreHierarchy(obj, map, hierarchy, stepX, stepY, initBeg) {
   count.linesCrossed = 0;
   count.componentsOverlapped = 0;
   const index = htmlFileList(obj);
-  const [orderedNames, place] = placeHierarchy(map, hierarchy, stepX, stepY, initBeg);
+  const typeEl = typeHtmlJs(obj, hierarchy[0][0]);
+  const [orderedNames, place] = placeHierarchy(map, hierarchy, typeEl, stepX, stepY, initBeg);
   for (let k = 0; k < orderedNames.length; k += 1) {
     // We are identifying the component...
     const num = index.indexOf(orderedNames[k]);
     const position = place[k];
+    // alert('place beg :' + position.x + ' / ' + position.y);
     // ... and tracing the links leaving from it ...
     for (let j = 0; j < obj.files[num].hyperlinks.length; j += 1) {
       const towards = place[orderedNames.indexOf(obj.files[num].hyperlinks[j])];
-      const [beg, end] = arrowBetween('htmljs1', position, 'htmljs1', towards);
+      const [beg, end] = arrowBetween(typeHtmlJs(obj, orderedNames[k]), position, typeHtmlJs(obj, obj.files[num].hyperlinks[j]), towards);
       const [a, b] = fillLine(map, beg, end);
       // ... obviously counting the problems encountered.
       count.linesCrossed += a;
@@ -1055,41 +1119,241 @@ function traceBitmap(mmm) {
 
 // Finding the best hierarchy (minimum of score) by iterating a certain number of times
 function bestHierarchy(obj, hierarchy, stepX, stepY, initBeg, it) {
+  // Random high value, to be sure that it will decrease
   let min = 1000;
   let listNames;
   let listPlace;
   for (let k = 0; k < it; k += 1) {
     const bitMap = initiateMap(5000, 5000);
     const [names, place, score] = calculateScoreHierarchy(obj, bitMap, hierarchy, stepX, stepY, initBeg);
+    // Is the new score with the new configuration better than the old one
     if (score < min) {
       listNames = names.slice(0);
       listPlace = place.slice(0);
       min = score;
     }
   }
+  // Return the best configuration : list of names from up to the bottom and from righ to left, places of each component in the same order, score of the hierarchy
   return [listNames, listPlace, min];
 }
 
-// Layering of the best hierarchy in the diagram
-// First tracing the components, then putting all the links
-function layerFinalHierarchy(obj, bitMapGeneral, hierarchy, stepX, stepY, initBeg, it) {
-  const [listNames, listPlace] = bestHierarchy(obj, hierarchy, stepX, stepY, initBeg, it);
-  const index = htmlFileList(obj);
+// Sizing a text (a new line for each '-' separator) and writing svg instruction to layer it properly from the top left hand corner of a component
+function drawName(name, newPlace) {
+  const arr = name.split('-');
   let text = '';
-  // Firstly layer the elements
-  for (let k = 0; k < listNames.length; k += 1) {
-    text += `<use x="${listPlace[k].x}" y="${listPlace[k].y}" href="#htmljs1" />`;
+  const test = arr.length - 1;
+  // If text needs to be layered on multiple lines
+  if (test > 0) {
+    for (let k = 0; k < test; k += 1) {
+      const t = `${arr[k]}-`;
+      text += `<text x="${newPlace.x}" y="${newPlace.y + (k * 25)}" style="font-size:22px;">${t}</text>`;
+    }
+    text += `<text x="${newPlace.x}" y="${newPlace.y + (test * 25)}" style="font-size:22px;">${arr[test]}</text>`;
   }
-  // Second layer the lines
-  for (let k = 0; k < listNames.length; k += 1) {
-    const num = index.indexOf(listNames[k]);
-    for (let j = 0; j < obj.files[num].hyperlinks.length; j += 1) {
-      const towards = listPlace[listNames.indexOf(obj.files[num].hyperlinks[j])];
-      const [beg, end] = arrowBetween('htmljs1', listPlace[k], 'htmljs1', towards);
-      text += `<line x1="${beg.x}" y1="${beg.y}" x2="${end.x}" y2="${end.y}" style="stroke:black; stroke-width:3px; fill:black; marker-end:url(#fleche)" />`;
+  else {
+    // If a line is sufficient
+    text += `<text x="${newPlace.x}" y="${newPlace.y}" style="font-size:22px;">${name}</text>`;
+  }
+  return text;
+}
+
+// Placing a text on a html file
+function placeHtmlName(data, place) {
+  return drawName(data, { x: place.x + 6, y: place.y + 30 });
+}
+
+// Placing all names on a js-'linked to html' file (it could be from one to 4 according to the svg patterns predefined)
+function placeJsClientNames(obj, place, num, cmnJs, nbrJs) {
+  let text = '';
+  let p = -1;
+  // Layering differs according to the number of js files
+  const espaceY = 130 / nbrJs;
+  for (let i = 0; i < obj.files[num].jsClientLinks.length; i += 1) {
+    const name = obj.files[num].jsClientLinks[i];
+    if (cmnJs.indexOf(name) === -1) {
+      p += 1;
+      text += drawName(name, { x: place.x + 120, y: place.y + (espaceY * p) + 30 });
     }
   }
   return text;
 }
 
-// addToHtmlPage('#graph', svgStart + svgBody + svgEnd);
+// Layering of the best hierarchy in the diagram
+// First tracing the components, then putting all the links
+function layerFinalHierarchy(obj, bitMapGeneral, hierarchy, stepX, stepY, initBeg, it, space) {
+  const [listNames, listPlace] = bestHierarchy(obj, hierarchy, stepX, stepY, initBeg, it);
+  const index = htmlFileList(obj);
+  let text = '';
+  // Defining the first coordinates that will be needed to trace the border
+  // Tracing the border with the top left hand point (xb-yb) and the bottom right hand point (xe-ye)
+  const cadre = {};
+  cadre.xb = (initBeg.x + stepX) - space;
+  cadre.yb = (initBeg.y + stepY) - space;
+  cadre.ye = listPlace[listPlace.length - 1].y + 132 + space;
+  let xe = 0;
+  // Firstly layer the elements (drawing and writing of names)
+  for (let k = 0; k < listNames.length; k += 1) {
+    const ref = tagHtmlJs(obj, listNames[k]);
+    text += `<use x="${listPlace[k].x}" y="${listPlace[k].y}" href="${ref[0]}" />`;
+    text += placeHtmlName(listNames[k], listPlace[k]);
+    text += placeJsClientNames(obj, listPlace[k], indexOfHtml(obj, listNames[k]), ref[1], ref[2]);
+    const test = listPlace[k].x + 220 + space;
+    if (test > xe) {
+      xe = test;
+    }
+  }
+  // Second layer the lines
+  for (let k = 0; k < listNames.length; k += 1) {
+    const num = index.indexOf(listNames[k]);
+    for (let j = 0; j < obj.files[num].hyperlinks.length; j += 1) {
+      const refFrom = typeHtmlJs(obj, listNames[k])[0];
+      const towards = listPlace[listNames.indexOf(obj.files[num].hyperlinks[j])];
+      const refTowards = typeHtmlJs(obj, obj.files[num].hyperlinks[j])[0];
+      const [beg, end] = arrowBetween(refFrom, listPlace[k], refTowards, towards);
+      text += `<line x1="${beg.x}" y1="${beg.y}" x2="${end.x}" y2="${end.y}" style="stroke:black; stroke-width:2px; fill:black; marker-end:url(#fleche)" />`;
+    }
+  }
+  // Layering of the border (before the svg instructions of drawing components and links to be able to put a fill under these things)
+  cadre.xe = xe;
+  const textF = `<rect x="${cadre.xb}" y="${cadre.yb}" width="${cadre.xe - cadre.xb}" height="${cadre.ye - cadre.yb}" style="fill:#F0F8FF; stroke:black; stroke-width:1px;" />${text}`;
+  // Preparing output needed for another function
+  const point = {};
+  point.x = initBeg.x;
+  point.y = listPlace[listPlace.length - 1].y;
+  return [textF, point, xe];
+}
+
+/* Iterates the layering of hierarchy for all hierarchies found on our object
+Known limitation : the x-coordinate of the center of each symetric hierarchy is defined based on each hierarchy and not on the maximum value of this coordinate for all hierarchies
+*/
+function layerAllHierarchies(obj, map, stepX, stepY, initBeg, it, space) {
+  let text = '';
+  const allHierarchies = findHierarchies(obj)[0];
+  let begPoint = initBeg;
+  let xe;
+  for (let k = 0; k < allHierarchies.length; k += 1) {
+    const [svg, nextPoint, xend] = layerFinalHierarchy(obj, map, allHierarchies[k], stepX, stepY, begPoint, it, space);
+    begPoint = {};
+    begPoint = nextPoint;
+    begPoint.y += stepY;
+    text += svg;
+    xe = xend;
+  }
+  begPoint.y -= stepY;
+  return [text, begPoint, xe];
+}
+
+// Write svg instructions to layer files not included in a hierarchy
+// xp is the layering x-coordinate of each disordered file
+// begPoint is needed to know what is the y-coordinate of our layering
+function layerDisorderedFiles(obj, stepX, stepY, begPoint, xp, space) {
+  let text = '';
+  const [, names] = findHierarchies(obj);
+  const files = findDisorderedFiles(names, obj);
+  const point = begPoint;
+  const nameList = [];
+  const placeList = [];
+  const cadre = {};
+  cadre.xb = xp - space;
+  cadre.yb = (begPoint.y + stepY) - space;
+  cadre.xe = xp + 220 + space;
+  // To know how many files we are layering
+  let count = 0;
+  // Instructions to draw the components with their names
+  for (let k = 0; k < files.length; k += 1) {
+    for (let j = 0; j < files[k].length; j += 1) {
+      const currentFile = files[k][j];
+      count += 1;
+      const ref = tagHtmlJs(obj, currentFile);
+      text += `<use x="${xp}" y="${point.y + stepY}" href="${ref[0]}" />`;
+      text += placeJsClientNames(obj, { x: xp, y: point.y + stepY }, indexOfHtml(obj, currentFile), ref[1], ref[2]);
+      point.y += stepY;
+      nameList.push(currentFile);
+      const place = { x: xp, y: point.y };
+      placeList.push(place);
+      text += placeHtmlName(currentFile, place);
+    }
+  }
+  cadre.ye = begPoint.y + 132 + space;
+  // Instructions to draw the links between the components
+  for (let k = 0; k < files.length; k += 1) {
+    for (let j = 0; j < files[k].length; j += 1) {
+      const currentFile = files[k][j];
+      const num = indexOfHtml(obj, currentFile);
+      for (let i = 0; i < obj.files[num].hyperlinks.length; i += 1) {
+        const refFrom = typeHtmlJs(obj, currentFile)[0];
+        const from = placeList[nameList.indexOf(currentFile)];
+        const refTo = typeHtmlJs(obj, obj.files[num].hyperlinks[i])[0];
+        const to = placeList[nameList.indexOf(obj.files[num].hyperlinks[i])];
+        const [beg, end] = arrowBetween(refFrom, from, refTo, to);
+        text += `<line x1="${beg.x}" y1="${beg.y}" x2="${end.x}" y2="${end.y}" style="stroke:black; stroke-width:2px; fill:black; marker-end:url(#fleche)" />`;
+      }
+    }
+  }
+  // Layering of the border (before the svg instructions of drawing components and links to be able to put a fill under these things)
+  const textF = `<rect x="${cadre.xb}" y="${cadre.yb}" width="${cadre.xe - cadre.xb}" height="${cadre.ye - cadre.yb}" style="fill:#F0F8FF; stroke:black; stroke-width:1px;" />${text}`;
+  return [textF, begPoint.y + stepY];
+}
+
+
+// Write svg instructions in order to layer the 'Common Part'
+// xe is the x-coordinate of the end of the border in order to keep the symetry on
+function layerCommonPart(obj, place, stepX, stepY, xe, space) {
+  let text = '';
+  const common = findCommonClientFiles(obj);
+  let x = place.x + (stepX / 2);
+  const y = place.y + stepY;
+  let newPlace = {};
+  newPlace.x = x;
+  newPlace.y = y;
+  const cadre = {};
+  cadre.xb = x - space;
+  cadre.yb = (place.y + stepY) - (3 * space);
+  cadre.ye = y + 132 + space;
+  cadre.xe = xe + (stepX / 2);
+  // A loop for each category of common files : js, css and external
+  for (let k = 0; k < common[0].length; k += 1) {
+    text += `<use x="${newPlace.x}" y="${newPlace.y}" href="#js" />`;
+    text += drawName(common[0][k], { x: newPlace.x + 6, y: newPlace.y + 25 });
+    x += stepX;
+    newPlace = {};
+    newPlace.x = x;
+    newPlace.y = y;
+  }
+  for (let k = 0; k < common[1].length; k += 1) {
+    text += `<use x="${newPlace.x}" y="${newPlace.y}" href="#css" />`;
+    text += drawName(common[1][k], { x: newPlace.x + 6, y: newPlace.y + 25 });
+    x += stepX;
+    newPlace = {};
+    newPlace.x = x;
+    newPlace.y = y;
+  }
+  for (let k = 0; k < common[2].length; k += 1) {
+    text += `<use x="${newPlace.x}" y="${newPlace.y}" href="#ext" />`;
+    text += drawName(common[2][k], { x: newPlace.x + 6, y: newPlace.y + 25 });
+    x += stepX;
+    newPlace = {};
+    newPlace.x = x;
+    newPlace.y = y;
+  }
+  const textF = `<rect x="${cadre.xb}" y="${cadre.yb}" width="${cadre.xe - cadre.xb}" height="${cadre.ye - cadre.yb}" style="fill:#F0F8FF; stroke:black; stroke-width:1px;" /><text x="${cadre.xb + space}" y="${cadre.yb + (space * 2)}" style="font-size:30px;">Common Part</text>${text}`;
+  return textF;
+}
+
+// Trace the client side based on the higher x and y coordinate
+function traceClientSide(x, y, stepX, stepY) {
+  return `<polyline  points="3,3 ${x + stepX},3 ${x + stepX},${y + (2 * stepY)} 3,${y + (2 * stepY)} 3,3" style="stroke:black; stroke-width:4px; fill:none; stroke-linecap:round; stroke-dasharray:15,15;"/><text x="20" y="55" style="font-size:40px;">Client Side</text>`;
+}
+
+
+
+// BLOCK OF COMMAND
+const bitMapGeneral = initiateMap(5000, 5000);
+// renameExternalComponents();
+let [svgBody, begPoint, xe] = layerAllHierarchies(HTMLCLIENT, bitMapGeneral, 250, 200, { x: 0, y: 0 }, 5, 25);
+const [disordered, begY] = layerDisorderedFiles(HTMLCLIENT, 250, 200, { x: 0, y: begPoint.y + 200 }, 500, 25);
+svgBody += disordered;
+svgBody += layerCommonPart(HTMLCLIENT, { x: 0, y: begY }, 250, 200, xe, 25);
+svgBody += traceClientSide(xe, begY, 250, 200);
+
+addToHtmlPage('#graph', svgStart + svgBody + svgEnd);

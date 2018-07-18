@@ -72,25 +72,25 @@ The code is based on a list of components and links established before. The goal
 - allow the user to decide for each external file name what shortcut name he wants
 - ask the user each time for the shortcut name wanted and then update it in the base data
 
-## Kknowing where to link elements
+## Knowing where to link elements
 
 *Here are the methods that allow us for two components given, to calculate the point on each component where we will link them.*
 
-### relPos :
+### relPos
 - returns the relative position between two points, represented by an integer following the schema :
 ```
                         |
-				        1
-				    8   |   2
-				--7-----O-----3--
-				    6   |   4
-				        5
+                1
+            8   |   2
+        --7-----O-----3--
+            6   |   4
+                5
                         |
 ```
 - the first point is considered as the reference (placed at 0 on the schema before)
 - takes as parameters two points declared as objects with a x-coordinate and an y one
 
-### arrowBetween :
+### arrowBetween
 - takes into account 2 elements (with their names) and where they are placed (top left hand corner, point objects)
 - returns 2 point objects : the first is the point to link one the first ellement and the second is the one for the second element
 
@@ -99,23 +99,23 @@ The code is based on a list of components and links established before. The goal
 *In order to know where to put the elements, we are using a kind of bitmap. It will be filled by different numbers according to what we have on a pixel : a component, a line, crossing lines, overlapping components...
 What we want at the end is to calculate the number of lines crossing and of components overlapped. Thus we consider that we place first the components and then we trace the links between them, calculating at the same time the numbers we want.*
 
-### initiateMap :
+### initiateMap
 - takes the width and height wanted for the bitmap and return the bitmap filled with zeros
 - bitmap has been seen like that :
 ```
-	[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-	 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-	 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-	 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+  [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
 ```
 - as a result, when calling a point on the bitmap, we must invert x and y coordinates : bitmap[y][x]
 
-### fillComponent :
+### fillComponent
 - takes a bitmap and a component (name & point object)
 - fill the bitmap given with 1 where the component relies
 - when filling the bitmap, firstly put the component in it then put the line (with fillLine)
 
-### fillLine :
+### fillLine
 - takes a bitmap and 2 point objects
 - fill the line between the 2 points on the bitmap given (with the number 2)
 - returns the counting of how many lines did the new one crossed and how many components did the new line overlapped
@@ -125,21 +125,21 @@ What we want at the end is to calculate the number of lines crossing and of comp
 
 *Bunch of functions that aims at finding the best hierarchy layering for a hierarchy given (by iterating with a random position of each component on each level), and then create the SVG instructions to really layering them on our diagram.*
 
-### maxLevel :
+### maxLevel
 - for given hierarchy, returns the maximum number of files in the same level, and an array with the number of files by level (position in the array returned indicates the level)
 
-### randomList :
+### randomList
 - for given size, returns an array with 'positions' at a random place (which will be used to place randomly elements in a hierarchy's level)
 - if 3 is given, could return [0, 1, 2] or [1, 2, 0] or [2, 0, 1] etc...
 
-### placeHierarchy :
+### placeHierarchy
 - takes a bitmap and a html files hierarchy defined before
 - places on the bitmap the hierarchy with components position chosen randomly at each level
 - return a list of files names, gathered by level and ordered in the same way than in the hierarchy built
 - components are placed according to a virtual grid defined in the parameters of the function : the top left hand corner of elements is placed on meeting points
 - aiming at having symetry in order to be more visual
 
-### calculateScoreHierarchy :
+### calculateScoreHierarchy
 - takes a map, an object representing a side and a hierarchy with its layering information
 - returns the 'score' of the representation : namely a number taking into account the number of crossing lines and overlapping elements
 - the higher the score is, the worst is the representation
@@ -160,4 +160,57 @@ What we want at the end is to calculate the number of lines crossing and of comp
 - firstly places the components then places all the lines that link them
 - returns a SVG like text that contain all the instructions for drawing
 
-## NEXT !
+
+### layerAllHierarchies
+
+- iterates layerFinalHierarchy on all hierarchies found in the 'object side' given in parameters
+- layering of the hierarchies is done by putting the first hierarchy found above, and the second one after etc...
+
+## Defining and layering components details
+
+*Functions that define the type of component and write the name at the right place on components.*
+
+### howManyJs
+
+- returns the number of js files linked to our html files, and a list of the files in the 'Common Part'
+- doesn't take into account the 'Common Part' js files
+
+### typeHtmlJs
+
+- returns the reference name of the components in order to find information about him in the object 'phw'
+- build the reference name with the number of js files linked given by howManyJs
+- also returns the 'Common Part' files list
+
+### tagHtmlJs
+
+- exactly the same as the previous function ; just returns the svg tag for the element wanted
+
+### drawName
+
+- returns the svg instructions in order to draw a text
+- takes the position of the point where we want to write and the name which will be written
+- the text given will be split at each '-' and will be displayed on another line
+
+### placeHtmlName
+
+- returns the svg instructions to draw at the right place the name of the component
+- takes the name of the html element and the position of the element
+
+### placeJsClientNames
+
+- returns the svg instructions in order to draw at the right place all the js files names linked to an html element
+- takes the position of the files, its index in the general object, and information about js files (list of 'Common Part' js files and number of files linked -> same output as howMany)
+
+## Layering files not included in the hierarchies
+
+*These files namely are the files not 'hierarchized' and files present in the 'Common Part'.*
+
+### layerDisorderedFiles
+
+- returns svg instructions in order to draw files not included in any hierarchy
+- these files are placed in one vertical line below the hierarchies
+
+### layerCommonPart
+
+- returns svg instructions in order to draw the 'Common Part' with files used by a majority of html files
+- this part is situated below all other things displayed on the client side
