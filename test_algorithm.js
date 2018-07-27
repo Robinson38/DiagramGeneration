@@ -420,6 +420,8 @@ function findTopHierarchy(obj) {
 }
 
 // Find all the hierarchies on client side
+// Find all the hierarchies on client side
+
 function findHierarchies(obj) {
   let globalNameList = [];
   const toph = findTopHierarchy(obj);
@@ -431,44 +433,30 @@ function findHierarchies(obj) {
   for (const topHier of toph) {
     // Rank in the hierarchy
     let rk = 0;
-    let currentIndexFile = 0;
+    let first = 1;
     // List with names of elements already seen in the hierarchy
     nameList.push(topHier);
     globalNameList.push(topHier);
     const hierarchy = [[topHier, rk]];
-    // Number of new files added
-    let n = 1;
-    let nbis = 1;
-    let cur = topHier;
-    // Take the last element on the list to search for where it is hyperlinking
-    while (currentIndexFile < hierarchy.length) {
-      currentIndexFile += 1;
-      rk += 1;
-      // Iteration on all news files added to the hierarchy the step before
-      for (let m = 0; m < nbis; m += 1) {
-        const hyp = obj.files[indexHTML.indexOf(cur)].hyperlinks;
-        // Searching for the files hyperlinked which are not already ordered
-        for (const file of hyp) {
-          if (nameList.indexOf(file) === -1) {
-            hierarchy.push([file, rk]);
-            nameList.push(file);
-            globalNameList.push(file);
-            n += 1;
-          }
+    while (first > 0) {
+      const curObj = hierarchy[hierarchy.length - first][0];
+      const curInd = indexHTML.indexOf(curObj);
+      let second = 0;
+      for (const hyper of obj.files[curInd].hyperlinks) {
+        if (nameList.indexOf(hyper) === -1) {
+          second += 1;
+          nameList.push(hyper);
+          globalNameList.push(hyper);
+          hierarchy.push([hyper, rk + 1]);
         }
-        if (n > 0) {
-          n -= 1;
-        }
-        cur = nameList[currentIndexFile + m];
       }
-      nbis = n;
-      n = 1;
-      if (nbis === 0) {
-        currentIndexFile = hierarchy.length;
+      first -= 1;
+      if ((first === 0) && (second > 0)) {
+        first = second;
+        rk += 1;
       }
     }
     allHierarchies.push(hierarchy);
-    nameList = [];
   }
   return [allHierarchies, globalNameList];
 }
