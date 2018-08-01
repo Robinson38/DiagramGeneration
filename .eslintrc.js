@@ -10,7 +10,7 @@ module.exports = {
   rules: {
     'max-len': [
       "error",
-      140,
+      200,
       {
         ignoreTrailingComments: true,
         ignoreComments: true,

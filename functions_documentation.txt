@@ -1,102 +1,138 @@
 # Documentation - generating component diagrams
 
-This documentation refers to the file generate_SUMS_diagram_SVG.js
+This documentation refers to the file generate_SUMS_diagram_SVG.js.
+
 The code is based on a list of components and links established before. The goal is from the lists to draw an SVG component diagram of a web application. An extreme importance is given to the beauty and understanding of the layering ; the diagram must be easy and fast to understand.
 
-## Basic methods
+## Data structure
 
-### addToHtmlPage
-- takes a html tag and a text
-- put the text (in our code svg code) and put it in the html tag
+*The application is split in 3 parts : client side, server side and exteral part.*
 
-### htmlFileList
-- return a list of all the names of files included in the property "files" of the object given
-- serve as an index as we work with an object representing a 'side' and not a file list
+*For each of these parts, we have an object gathering the extension of the main files (html for client side, js for server side) and a list of these files. In this list, all the links with all type of elements are registered.*
 
-## Finding hierarchies of html files on client side
+*The patternsInfo array gathers all the SVG components with all information about them (width, height, points for linking...).*
+
+## Layering of all html hierarchies
 
 *The goal is to find if there is a hierarchy between the html files (linked between them by hyperlinks). Like if I open this page, I could go to these other pages, which are thus below in the hierarchy...*
 
 ### hyperLinkedHtml
-- return a list with all files targeted with an hyperlink
+- returns a list with all files targeted with an hyperlink
 - if files names are targetted by multiple hyperlinks, they will appeared as many times as the number of links
-- rough function in order to make easier the finding of top of hierarchies
+- rough function in order to make easier the finding of roots of hierarchies
 
-### findTopHierarchy
-- return a list of files names which are above a hierarchy
+*We begin by looking for roots of hierarchies (findHierarchyRoots).*
+
+### findHierarchyRoots
+- returns a list of files names which are on the top of a hierarchy
+
+*Then for each root we build the hierarchy (findHierarchies).*
 
 ### findHierarchies
-- return a list of hierarchies found in object.files
+- returns a list of the hierarchies found in the array 'files' of the file system
 - hierarchy is like [['top', 0], ['other', 1]]
-- 0 is the level on the top
-- the hirarchy is presented in the right order of levels
+- 0 is the level on the top, then 1 just below, then 2...
+- the hierarchy is presented in the right order of levels
+- limitation : if a hierarchy has 2 roots, one hierarchy will be found per root (they will not be merged)
 
-## Knowing which files must be in the client side 'Common Part'
+### hierarchiesFilesnameList
+- returns a list of all the files found in all hierarchies
+- function that will be called in other functions, as the ones dealing with the files not included in a hierarchy)
 
-*We define a 'Common Part' int the client side, namely gathering js, css or external files which are used by almost all of the html files on the client side. We calculate a threshold of utilisation to know if the file could be considered as used by a majority of html files.*
+*We want symetry when we place the files of the hierarchies found. Thus we need to know what is the maximum number of files in one same line (maxHierarchyFilesLevel).*
 
-### frequencyUsedFiles
-- return a list of js file names and another list of frequencies associated to the names
-- frequency is the average use of js files by html files
+### maxHierarchyFilesLevel
+- for a given hierarchy, returns the maximum number of files in the same level, and an array with the number of files by level (position in the array returned indicates the level)
+- aims at preparing the layer of the hierarchy with a symetry
 
-### commonThreshold
-- return a threshold to know which files are 'sufficiently used' to be in the 'Common Part'
+*The positionning of each file at each level is not unique, thus we have randomList that generates random positions (randomList).*
+
+### randomList
+- for given size, returns an array with 'positions' at a random place (which will be used to place randomly elements in a hierarchy's level)
+- if 3 is given, could return [0, 1, 2] or [1, 2, 0] or [2, 0, 1] etc...
+
+*In order to know what is the best layering for a hierarchy, we have to first place them on a bitmap (placeHierarchyMap). It is then easier to look at the interactions between components and lines : the number of crossing lines and the number of components overlapped.
+The counting of this 2 numbers allows us to define a 'score' (calculateScoreHierarchy). As we want to avoid lines crossed and components overlapped, we want to lower the 'score' of a hierarchy.
+The bunch of functions that tackle with the bitmap are in the part "Functions dealing with the bitmap".*
+
+### placeHierarchyMap
+- takes a bitmap, a html files hierarchy defined before and information about where to begin drawing and the spacing between elements
+- places on the bitmap the hierarchy with components position chosen randomly at each level (with fillComponentMap and randomList functions)
+- returns a list of files names, gathered by level and ordered in the same way than in the hierarchy built : returns one position of elements for the hierarchy
+- components are placed according to a virtual grid defined in the parameters of the function : the top left hand corner of elements is placed on meeting points
+- aiming at having symetry in order to be more visual
+
+### calculateScoreHierarchy
+- takes a map, an object representing a side and a hierarchy with its layering information
+- returns the 'score' of a representation (given randomly by placeHierarchyMap): namely a number taking into account the number of crossing lines and overlapping elements
+- returns with this score a list of the files ordered and one with their places (the layer that provided this score)
+- after generating a layer (with placeHierarchyMap), the algorithm places the links between the components (with arrowBetweenElements) and sums for each line the number explained before
+- the higher the score is, the worst is the representation
+
+*As positions of files at each level are defined randomly, we can iterate the calculation of the score on different layering for one hierarchy, and then choose the layering that has the minimum 'score' (findBestHierarchyLayering).*
+
+### findBestHierarchyLayering
+- iterating the process of randomly choose a hierarchy layering and then calculate the score of the representation (with calculateScoreHierarchy)
+- the hierarchy chosen is the one minimizing the score
+- returns the output of calculateScoreHierarchy for the minimum of the score
+
+*Final step is to generates the SVG code for the best layering found for a hierarchy (layerBestHierarchy), and then iterates on each hierarchy found at the beginning (completeHierarchiesLayering).*
+
+### layerBestHierarchy
+- function all in one that finds the best hierarchy (with findBestHierarchyLayering) and layers it on the diagram
+- firstly places the components then places all the lines that link them
+- returns a SVG code that contain all the instructions for drawing this hierarchy found as the best layering
+- takes space which is the gap between the component at the border of the hierarchy and the border of the hierarchy that will be drawn
+
+### completeHierarchiesLayering
+- iterates layerBestHierarchy on all hierarchies found in the file system given in parameters
+- layering of the hierarchies is done by putting the first hierarchy found above, and the second one after etc...
+- returns the SVG code for layering but also the beginning point for new things to layer after and the final x-coordinate to know where to stop tracing the border
+
+## Layering of the files not included in a hierarchy
+
+*If possible, we gather the files not in a hierarchy but still hyperlinked between them. If not, we just know that a file is alone. (findClientDisorderedFiles)*
+
+### findClientDisorderedFiles
+- returns a list of groups of html files which doesn't appear in the hierarchies
+- groups are made according to the existence of hyperlinks between files
+- aim at ordering files not involved in a hierarchy
+
+*Ultimate step of the SVG code generation for layering (layerClientDisorderedFiles).*
+
+### layerClientDisorderedFiles
+- returns SVG code which allows to draw the files not included in any hierarchy
+- parameters given indicate the position of this layering
+- these files are placed in one vertical line below the hierarchies
+
+## Layering of the client side 'Common Part'
+
+*We define a 'Common Part' in the client side, namely gathering js, css or external files which are used by almost all of the html files on the client (usedFilesFrequency).
+We calculate a threshold of utilisation to know if the file could be considered as used by a majority of html files (commonPartThreshold).*
+
+### usedFilesFrequency
+- returns a list of js/css/external file names and another list of frequencies associated to the names of the files (in the same order)
+- frequency is the average use of file by html files
+
+### commonPartThreshold
+- returns a threshold to know which files are 'sufficiently used' to be in the 'Common Part'
 - threshold calculation based on the maximum gap between frequencies
 - threshold can't be under 0.66 and above 1
 
+*Once the threshold is calculated, we can easily find the files that must be in the 'Common Part' (findCommonClientFiles). The last step is the generation of SVG code for its layering (layerClientCommonPart).*
+
 ### findCommonClientFiles
-- based on the threshold defined before, return a list of files which must be in the 'Common Part' (frequency of use above the threshold)
+- based on the threshold defined before
+- returns a list of files which must be in the 'Common Part' (one list per type of files)
 
-## Knowing which files must be in the server side 'ToolBox'
+### layerClientCommonPart
+- returns SVG code which allows to draw the 'Common Part' with files used by a majority of html files
+- this part is situated below all other things displayed on the client side
+- xBorderEnd is the x-coordinate where the Common Box border will stop
 
-*The 'ToolBox' must gather the js files which do not call other js files, thus which are just used like tools by the other js files on the server side.*
+## Functions dealing with the bitmap
 
-### findToolBox
-- return a list of js file names which have not links towards other js files
-- these files are only used by the other files like 'tools'
-
-## Trying to order html files not in a hierarchy in the client side
-
-*If possible, we gather the files not in a hierarchy but still hyperlinked between them. If not, we just know that a file is alone.*
-
-### findDisorderedFiles
-- returns a list of groups of html files which doesn't appear in the hierarchies
-- groups are made according to the existence of hyperlinks between files
-- aim at order the files not involved in a hierarchy
-
-## Renaming the externalfiles
-
-*As files in the external part are usually hard-named, we ask the user to give them a shortcut. This is not the best solution but for now, it will be sufficient.*
-
-### renameExternalComponents
-- allow the user to decide for each external file name what shortcut name he wants
-- ask the user each time for the shortcut name wanted and then update it in the base data
-
-## Knowing where to link elements
-
-*Here are the methods that allow us for two components given, to calculate the point on each component where we will link them.*
-
-### relPos
-- returns the relative position between two points, represented by an integer following the schema :
-```
-                        |
-                1
-            8   |   2
-        --7-----O-----3--
-            6   |   4
-                5
-                        |
-```
-- the first point is considered as the reference (placed at 0 on the schema before)
-- takes as parameters two points declared as objects with a x-coordinate and an y one
-
-### arrowBetween
-- takes into account 2 elements (with their names) and where they are placed (top left hand corner, point objects)
-- returns 2 point objects : the first is the point to link one the first ellement and the second is the one for the second element
-
-## Positioning the elements
-
-*In order to know where to put the elements, we are using a kind of bitmap. It will be filled by different numbers according to what we have on a pixel : a component, a line, crossing lines, overlapping components...
+*In order to know where to put the elements, we are using a kind of bitmap (initiateMap). It will be filled by different numbers according to what we have on a pixel : a component (fillComponentMap), a line (fillLineMap), crossing lines, overlapping components...
 What we want at the end is to calculate the number of lines crossing and of components overlapped. Thus we consider that we place first the components and then we trace the links between them, calculating at the same time the numbers we want.*
 
 ### initiateMap
@@ -108,109 +144,107 @@ What we want at the end is to calculate the number of lines crossing and of comp
    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
 ```
-- as a result, when calling a point on the bitmap, we must invert x and y coordinates : bitmap[y][x]
+- when calling a point on the bitmap, we must invert x and y coordinates : bitmap[y][x]
 
-### fillComponent
+### fillComponentMap
 - takes a bitmap and a component (name & point object)
 - fill the bitmap given with 1 where the component relies
-- when filling the bitmap, firstly put the component in it then put the line (with fillLine)
 
-### fillLine
+### fillLineMap
 - takes a bitmap and 2 point objects
-- fill the line between the 2 points on the bitmap given (with the number 2)
+- fills the line between the 2 points on the bitmap given (with the number 2)
 - returns the counting of how many lines did the new one crossed and how many components did the new line overlapped
 - for each pixel of a line filled, also fills the top and bottom closest pixel, in order to detect all the intersections possible (for a vertical line, it's the right and left closest bits which are pixel)
 
-## Layering the best hierarchy
-
-*Bunch of functions that aims at finding the best hierarchy layering for a hierarchy given (by iterating with a random position of each component on each level), and then create the SVG instructions to really layering them on our diagram.*
-
-### maxLevel
-- for given hierarchy, returns the maximum number of files in the same level, and an array with the number of files by level (position in the array returned indicates the level)
-
-### randomList
-- for given size, returns an array with 'positions' at a random place (which will be used to place randomly elements in a hierarchy's level)
-- if 3 is given, could return [0, 1, 2] or [1, 2, 0] or [2, 0, 1] etc...
-
-### placeHierarchy
-- takes a bitmap and a html files hierarchy defined before
-- places on the bitmap the hierarchy with components position chosen randomly at each level
-- return a list of files names, gathered by level and ordered in the same way than in the hierarchy built
-- components are placed according to a virtual grid defined in the parameters of the function : the top left hand corner of elements is placed on meeting points
-- aiming at having symetry in order to be more visual
-
-### calculateScoreHierarchy
-- takes a map, an object representing a side and a hierarchy with its layering information
-- returns the 'score' of the representation : namely a number taking into account the number of crossing lines and overlapping elements
-- the higher the score is, the worst is the representation
-
-### traceBitmap
-
+### drawFilledMap
 - 'testing' function that layers the bitmap in order to verify if everything is okay when we are testing the different functions
 
-### bestHierarchy
+## Functions for linking elements
 
-- iterating the process of randomly choose a hierarchy layering and then calculate the score of the representation
-- the hierarchy chosen is the one minimizing the score
-- returns a list of names as they are ordered in the hierarchy and a list of the places of each component (also ordered like the names)
+*In order to link two elements, you have to know how they are placed one according to the other (relativePosition). Then you can define the points where the link between them will start and end (arrowBetweenElements).*
 
-### layerFinalHierarchy
+### relativePosition
+- returns an integer reflecting the relative position between two points, represented by an integer following the schema :
+```
+                |
+                1
+            8   |   2
+        --7-----O-----3--
+            6   |   4
+                5
+                |
+```
+- the first point is considered as the reference (placed at 0 on the schema before)
+- takes as parameters two points declared as objects with a x-coordinate and an y one
 
-- function all in one that finds the best hierarchy (bestHierarchy) and layer it on the diagram
-- firstly places the components then places all the lines that link them
-- returns a SVG like text that contain all the instructions for drawing
+### arrowBetweenElements
+- takes into account 2 elements (with their names) and where they are placed (top left hand corner, point objects)
+- returns 2 point objects : the first is the point to link in the first element and the second point is the one for the second element
 
+## Other functions
 
-### layerAllHierarchies
+*Functions for handling easier the client side research of elements.*
 
-- iterates layerFinalHierarchy on all hierarchies found in the 'object side' given in parameters
-- layering of the hierarchies is done by putting the first hierarchy found above, and the second one after etc...
+### indexOfHtml
+- returns the index of a given html name in the file system given
 
-## Defining and layering components details
+### htmlFileList
+- returns a list of all the names of files included in the array "files" of the file system given
+- serve as an index as we work with an file system representing a 'side' and not a file list
+
+*Functions that gives us some information about the components corresponding to a html file.*
+
+### numberOfJsFiles
+- returns the number of js links of a file on the client side without counting the links towards 'Common Part'
+- also returns a list of the js files in the 'Common Part'
+- will be used to know how many js files should we layer aside each html
+
+### typeHtmlJs
+- for a given html file, finds and returns the reference of the component which will be draw
+- counts the number of Js files without taking into account the ones in the 'Common Part'
+
+### tagHtmlJs
+- the same as typeHtmlJs, but returns the name of the SVG tag of the element, and not its name in the array patternsInfo
 
 *Functions that define the type of component and write the name at the right place on components.*
 
-### howManyJs
+### writeFileName
 
-- returns the number of js files linked to our html files, and a list of the files in the 'Common Part'
-- doesn't take into account the 'Common Part' js files
-
-### typeHtmlJs
-
-- returns the reference name of the components in order to find information about him in the object 'phw'
-- build the reference name with the number of js files linked given by howManyJs
-- also returns the 'Common Part' files list
-
-### tagHtmlJs
-
-- exactly the same as the previous function ; just returns the svg tag for the element wanted
-
-### drawName
-
-- returns the svg instructions in order to draw a text
+- returns the SVG instructions in order to draw a text
+- takes a separator which is where the text will be split in different lines
 - takes the position of the point where we want to write and the name which will be written
 - the text given will be split at each '-' and will be displayed on another line
 
-### placeHtmlName
+### layerHtmlFileName
 
-- returns the svg instructions to draw at the right place the name of the component
+- returns the SVG instructions for drawing at the right place the name of the HTML component (using writeFileName)
 - takes the name of the html element and the position of the element
 
-### placeJsClientNames
+### layerJsFileName
 
-- returns the svg instructions in order to draw at the right place all the js files names linked to an html element
-- takes the position of the files, its index in the general object, and information about js files (list of 'Common Part' js files and number of files linked -> same output as howMany)
+- returns the SVG instructions in order to draw at the right place all the js files names linked to an html element (using writeFileName)
+- takes the position of the files, its index in the general object, and information about js files (list of 'Common Part' js files and number of files linked)
 
-## Layering files not included in the hierarchies
+*Function that traces the client side border.*
 
-*These files namely are the files not 'hierarchized' and files present in the 'Common Part'.*
+### traceClientSide
+- trace a border around all client side things
 
-### layerDisorderedFiles
+*Function that permit to draw on SVG on the html page.*
 
-- returns svg instructions in order to draw files not included in any hierarchy
-- these files are placed in one vertical line below the hierarchies
+### setElementContent
+- takes a html selector and some html code
+- insert the code in the html selector
 
-### layerCommonPart
+*The 'ToolBox' must gather the js files which do not call other js files, thus which are just used like tools by the other js files on the server side.*
 
-- returns svg instructions in order to draw the 'Common Part' with files used by a majority of html files
-- this part is situated below all other things displayed on the client side
+### findServerToolbox
+- returns a list of js file names which have not links towards other js files
+- these files are only used by the other files like 'tools'
+
+*As files in the external part are usually hard-named, we ask the user to give them a shortcut. This is not the best solution but for now, it will be sufficient.*
+
+### renameExternalComponents
+- allow the user to decide for each external file name what shortcut name he wants
+- ask the user each time for the shortcut name wanted and then update it in the base data
+- limitation : rough function that needs another vison of the things to be more efficient

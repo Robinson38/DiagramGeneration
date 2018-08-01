@@ -399,7 +399,7 @@ const functionCalls = {
     {
       name: 'layerClientDisorderedFiles',
       jsClientLinks: [],
-      hyperlinks: ['findHierarchies', 'findClientDisorderedFiles', 'tagHtmlJs', 'layerJsFileName', 'indexOfHtml', 'layerHtmlFileName', 'typeHtmlJs', 'arrowBetweenPoints'],
+      hyperlinks: ['hierarchiesFilesnameList', 'findClientDisorderedFiles', 'tagHtmlJs', 'layerJsFileName', 'indexOfHtml', 'layerHtmlFileName', 'typeHtmlJs', 'arrowBetweenPoints'],
       jsserverlinks: [],
       cssLinks: [],
       externalLinks: [],
@@ -420,6 +420,14 @@ const functionCalls = {
       cssLinks: [],
       externalLinks: [],
     },
+    {
+      name: 'hierarchiesFilesnameList',
+      jsClientLinks: [],
+      hyperlinks: [],
+      jsserverlinks: [],
+      cssLinks: [],
+      externalLinks: [],
+    }
   ],
 };
 
@@ -1472,7 +1480,7 @@ function traceClientSide(x, y, stepX, stepY) {
 
 const bitMapGeneral = initiateMap(10000, 20000);
 // renameExternalComponents();
-let [svgBody, begPoint, xe] = completeHierarchiesLayering(functionCalls, bitMapGeneral, 250, 350, { x: 0, y: 0 }, 200, 25, '-');
+let [svgBody, begPoint, xe] = completeHierarchiesLayering(functionCalls, bitMapGeneral, 250, 350, { x: 0, y: 0 }, 1, 25, '-');
 const [disordered, begY] = layerClientDisorderedFiles(functionCalls, 250, 350, { x: 0, y: begPoint.y + 350 }, 1000, 25, '-');
 svgBody += disordered;
 svgBody += layerClientCommonPart(functionCalls, { x: 0, y: begY }, 250, 350, xe, 25, '-');
